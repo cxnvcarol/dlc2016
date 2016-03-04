@@ -8,8 +8,16 @@
 </head>
 <body>
 Ach so! I ohooo jaja ... just want to check that a simple html can be showed without big problems!!
-
-<div class="app">
+<script type="text/javascript" src="js/3rdparty/jquery-2.2.1.min.js"></script>script>
+<script type="text/javascript">
+    console.log("test");
+    var result = $.ajax({
+        headers : { Authorization : "Bearer 8c62c669ac72dad461cc6292a5123479" },
+        url : "https://developer.fraport.de/api/checkininfo/1.0/checkininfo",
+        success : function() { console.log("success") }});
+    console.log("Nothing happened");
+</script>
+<div class="app" name="stupiddiv">
     I just don't like the css
 
 <!--
