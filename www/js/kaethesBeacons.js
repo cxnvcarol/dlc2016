@@ -12,23 +12,13 @@ function addFraPositionsToMap()
     }).addTo(leafletMap);
 
 
-    var counter = 0;
     for(var test in positionDataFra.allSites)
     {
         var site = positionDataFra.allSites[test];
         if(site.terminal != null && site.latitude != undefined) {
-            circleArrayFrapos.push(new L.circle([site["latitude"], site["longitude"]], 5, {
-                color: 'blue',
-                fillColor: 'blue',
-                fillOpacity: 0.5
-            }));
-            leafletMap.addLayer(circleArrayFrapos[counter]);
-            circleArrayFrapos[counter].bindPopup(site.name);
-            counter++;
+            drawOnMap(site.latitude, site.longitude, site.name, 'blue')
         }
     }
-
-    console.log("array length: " + circleArrayFrapos.length);
 }
 
 
@@ -73,7 +63,7 @@ function addBeaconToMap()
     L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(leafletMap);;
+    }).addTo(leafletMap);
 
     circleArray = [];
     circleArray.length = 0;
@@ -83,14 +73,7 @@ function addBeaconToMap()
     {
         if(beaconData[test].latitude != undefined) {
             if(beaconData[test].floor == currentFloor) {
-                circleArray.push(new L.circle([beaconData[test].latitude, beaconData[test].longitude], 15, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5
-                }));
-                leafletMap.addLayer(circleArray[counter]);
-                circleArray[counter].bindPopup(beaconData[test].name);
-                counter++;
+                drawOnMap(beaconData[test].latitude, beaconData[test].longitude, beaconData[test].name, 'red');
             }
         }
     }
@@ -113,7 +96,17 @@ function goOneFloorDown()
 }
 
 
-
+// generic draw on map function
+function drawOnMap(lat, long, name, color)
+{
+    aPointOnTheMap = new L.circle([lat, long], 5, {
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.5
+    });
+    leafletMap.addLayer(aPointOnTheMap);
+    aPointOnTheMap.bindPopup(name);
+}
 
 
 addBeaconToMap();
