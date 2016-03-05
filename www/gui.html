@@ -77,7 +77,7 @@
         <h1></h1>
     </div>
     <div data-role="main" class="ui-content" style="padding-top: 50px;">
-        <a href="#pass-go" class="ui-icon-pgo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pgo" data-theme="a"></a>
+        <a href="#pass-go" class="ui-icon-pgo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pgo" data-theme="a"  onclick="fixMap()"></a>
         <a href="#pass-play" class="ui-icon-pplay ui-nodisc-icon gui-btn"  data-role="button" data-icon="pplay" data-theme="a"></a>
         <a href="#pass-info" class="ui-icon-pinfo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pinfo" data-theme="a"></a>
     </div>
@@ -95,6 +95,8 @@
     <script>
         var map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+
 
     </script>
 
@@ -127,6 +129,16 @@
 <script src="js/fraportAPI/dataLoader.js"></script>
 
 <script src="js/guiActions.js"></script>
+
+<script type="text/javascript">
+    function fixMap()
+    {
+        setTimeout(function(){
+            map.invalidateSize();
+        }, 500);
+    }
+
+</script>
 
 </body>
 </html>
