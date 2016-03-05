@@ -36,34 +36,43 @@ var Quest = {
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
     follow: function(target, currentPosition, u, l) {
         var normalize = function(vec) {
-            var len = Math.sqrt(vec.long * vec.long + vec.lati * vec.lati);
+            var len = Math.sqrt(vec.x * vec.x + vec.y * vec.y);
             return {
-                long:vec.long / len,
-                lati:vec.lati / len
+                x: vec.x / len,
+                y: vec.y / len
             };
         };
-        var direction = {
-            long: target.long - currentPosition.long,
-            lati: target.lati - currentPosition.lati
+        var R = 6371000; // metres
+        var xyTarget = {
+            x: R * Math.sin(target.lati) * Math.cos(target.long),
+            y: R * Math.sin(target.lati) * Math.sin(target.long)
         };
-        direction = normalize(direction);
+        var xyCurr = {
+            x: R * Math.sin(currentPosition.lati) * Math.cos(currentPosition.long),
+            y: R * Math.sin(currentPosition.lati) * Math.cos(currentPosition.long)
+        };
+        var direction = normalize({x: xyTarget.x - xyCurr.x, y: xyTarget.y - xyCurr.y});
         var normal = {
-            long: direction.lati,
-            lati: - direction.long
+            x: direction.y,
+            y: - direction.x
         };
         var p = {
-            long: currentPosition.long + l * direction.long,
-            lati: currentPosition.lati + l * direction.lati
+            x: currentPosition.x + l * direction.x,
+            y: currentPosition.y + l * direction.y
         };
         var e_1 = {
-            long: currentPosition.long - u * normal.long,
-            lati: currentPosition.lati - u * normal.lati
+            x: currentPosition.x - u * normal.x,
+            y: currentPosition.y - u * normal.y
         };
         var e_2 = {
-            long: currentPosition.long + u * normal.long,
-            lati: currentPosition.lati + u * normal.lati
+            x: currentPosition.x + u * normal.x,
+            y: currentPosition.y + u * normal.y
         };
-        drawArrow(p.lati, p.long, e_1.lati, e_1.long, e_2.lati, e_2.long);
+        drawArrow(
+            Math.acos(p.y / R), Math.atan2(p.x, p.y),
+            Math.acos(e_1.y / R), Math.atan2(e_1.x, e_1.y),
+            Math.acos(e_2y / R), Math.atan2(e_2.x, e_2.y)
+        );
     },
     // finish quest if correct qr code is scanned
     finish: function(scanned, currentTarget) {
