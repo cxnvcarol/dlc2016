@@ -135,3 +135,11 @@
     background-repeat: no-repeat  !important;
     height: 30px !important;
 }
+
+.ui-label {
+    background-color: rgba(255,255,255,0.6) !important;
+    background-size: 30%;
+    background-position: center  !important;
+    background-repeat: no-repeat  !important;
+    height: 30px !important;
+}
