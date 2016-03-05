@@ -96,6 +96,8 @@
         var map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
+
+
     </script>
 
 
@@ -127,6 +129,12 @@
 <script src="js/fraportAPI/dataLoader.js"></script>
 
 <script src="js/guiActions.js"></script>
+
+<script type="text/javascript">
+    setTimeout(function(){
+        map.invalidateSize();
+    }, 1000);
+</script>
 
 </body>
 </html>
