@@ -41,7 +41,7 @@ var app = {
 
         //Other initializations should be before this line:
         console.log("before received event");
-        //alert("device ready!");
+
         app.receivedEvent('deviceready');
         console.log("after receiving the event");//this line is never executed.
 
@@ -64,36 +64,38 @@ function getVertices(region) {
     var index=parseInt(region.identifier);
     $('#msg').text(JSON.stringify(app.beaconRegions[index]));
     var returned=[app.beaconRegions[index].latitude,app.beaconRegions[index].longitude];
-    //alert("returned: "+JSON.stringify(returned));
+
     return returned;
 }
 function recalculatePosition() {
 
     var vertices=[];
-
     if(app.sensedRegions.length==1)
     {
-        return getVertices(app.sensedRegions[0]);
-    }
-    if(app.sensedRegions==0)
-    {
-        return app.currentPosition;
-    }
-    app.sensedRegions.forEach(function(reg)
-    {
-        var myv=getVertices(reg);
-        vertices.push(myv);
+        app.currentPosition=getVertices(app.sensedRegions[0]);
 
-    });
-    var polygon= L.polygon(vertices);
-    var center=polygon.getBounds().getCenter();
-    app.currentPosition=[center.lat,center.lng];
+    }
+    else if(app.sensedRegions.length>1){
+        app.sensedRegions.forEach(function(reg)
+        {
+            var myv=getVertices(reg);
+            vertices.push(myv);
+
+        });
+        var polygon= L.polygon(vertices);
+        var center=polygon.getBounds().getCenter();
+        app.currentPosition=[center.lat,center.lng];
+    }
+
+    var iconurl="img/cross.png";
     $('#mypos').text("pos: "+app.currentPosition);
-
-
+    var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
+    return app.currentPosition;
 }
+
 app.startScanForBeacons = function()
 {
+
     console.log('startScanForBeacons!');
 
     // The delegate object contains iBeacon callback functions.
@@ -102,8 +104,10 @@ app.startScanForBeacons = function()
     var delegate = new cordova.plugins.locationManager.Delegate();
 
 
+
     delegate.didDetermineStateForRegion = function(pluginResult)
     {
+
         console.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
         var state=pluginResult.state;
         var reg=pluginResult.region;
@@ -121,14 +125,11 @@ app.startScanForBeacons = function()
         $('#sensed').text(JSON.stringify(app.sensedRegions));
 
         recalculatePosition();
-
     };
 
     delegate.didStartMonitoringForRegion = function(pluginResult)
     {
         console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-
-
     };
 
     delegate.didRangeBeaconsInRegion = function(pluginResult)
@@ -144,8 +145,6 @@ app.startScanForBeacons = function()
     // Start monitoring and ranging our beacons.
 
     $.get("https://cube.api.aero/atibeacon/beacons/1?airportCode=FRA&app_id=fe56f70a&app_key=a5eaa885ac1c5b96999679f8e5cb9af9",function(d){
-
-
         d.forEach(function(region,i){
             if(region.floor==null)
             {

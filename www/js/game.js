@@ -4,19 +4,67 @@
 var TargetDB = {
     targets: [
         {
-            name: 'first',
-            descr: 'Find the lala. It matters a little.',
+            name: "JWolfskinQuest",
+            title: "Fight the wolfs!",
+            descr: "Although the FRAPORT is usually known as a very civilized environment, it's time you go back to your inner hunter. Fight the wolfs and get their skin!",
             position: {
-                longitude: 0,
-                latitude: 0
+                longitude: 8.570677042007446,
+                latitude: 50.0501323567298,
+            },
+            points: 0
+        },
+
+        {
+            name: "StarbucksQuest",
+            title: "That's a cheap reach for the stars!",
+            descr: "A mermaid glances at you while you initiate your own personal relaxation mode... Even if you take the small timeout to go!",
+            position: {
+                longitude: 8.573868870735167,
+                latitude: 50.051372391135324,
+            },
+            points: 0
+        },
+
+        {
+            name: "FossilQuest",
+            title: "What a day for paleontology!",
+            descr: "Here at FRAPORT, you cannot only travel through space, but also through time! Visit the glamorous jurrassic ages and maybe even find your personal souvenir!",
+            position: {
+                longitude: 8.571395874023438,
+                latitude: 50.05015991339804,
+            },
+            points: 0
+        },
+
+        {
+            name: "MDonaldsQuest",
+            title: "A truely international clown!",
+            descr: "Some people are hating it, but much larger share of people are loving it! No surprise - this company serves its customers the quickest food since more that 75 years.",
+            position: {
+                longitude: 8.573498725891112,
+                latitude:  50.04784854285611,
+            },
+            points: 0
+        },
+
+        {
+            name: "SpecialQuest",
+            title: "Why did I came here again?",
+            descr: "We know you had so much fun exploring this beautiful hub! We're also sad you have to leave. With so many tears in our eyes, this special quest is worth more XP than every other quest in the game. The task? Get to your gate in time!",
+            position: {
+                longitude: 8.567174,
+                latitude:  50.046467,
             },
             points: 0
         }
+
+
+
     ],
     rewards: [
         {
             shopName: McDonalds,
-            descr: '50% Off a Happy Meal',
+            descr: '50% Off a McMenu',
             points: 10
         },
         {
@@ -31,10 +79,22 @@ var Quest = {
     // assign a quest to the player
     acquire: function(duration, currentPosition) {
         // based on interests and available time select quest/target
-        return target;
+        var closest = {id: 0, dist: Infinity};
+        for(i = 0; i < TargetDB.targets.length; i++) {
+            d = distanceBetweenPositions(
+                currentPosition.lati,
+                currentPosition.long,
+                TargetDB.targets[i].position.latitude,
+                TargetDB.targets[i].position.longitude);
+            if(d <= closest.dist && $.inArray(closest.id, Game.log.targetHistory) < 0) {
+                closest.dist = d;
+                closest.id = i;
+            }
+        }
+        return closest.id;
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
-    follow: function(target, currentPosition, u, l) {
+    follow: function(target, currentPosition, distFromCurr, arrowWidth, arrowHeight) {
         var normalize = function(vec) {
             var len = Math.sqrt(vec.x * vec.x + vec.y * vec.y);
             return {
@@ -57,16 +117,16 @@ var Quest = {
             y: - direction.x
         };
         var p = {
-            x: currentPosition.x + l * direction.x,
-            y: currentPosition.y + l * direction.y
+            x: currentPosition.x + distFromCurr * direction.x,
+            y: currentPosition.y + distFromCurr * direction.y
         };
         var e_1 = {
-            x: currentPosition.x - u * normal.x,
-            y: currentPosition.y - u * normal.y
+            x: currentPosition.x - arrowWidth * normal.x + arrowHeight * direction.x,
+            y: currentPosition.y - arrowWidth * normal.y + arrowHeight * direction.y
         };
         var e_2 = {
-            x: currentPosition.x + u * normal.x,
-            y: currentPosition.y + u * normal.y
+            x: currentPosition.x + arrowWidth * normal.x + arrowHeight * direction.x,
+            y: currentPosition.y + arrowWidth * normal.y + arrowHeight * direction.y
         };
         drawArrow(
             Math.acos(p.y / R), Math.atan2(p.x, p.y),
@@ -96,14 +156,11 @@ var Game = {
     },
     start: function(duration) {
         // start game
-    },
-    gatherItems: function() {
-        // gather shop items
-        return TargetDB.rewards;
-    },
-    buyItem: function(id) {
-        // buy item with given id
-        this.log.currentPoints -= TargetDB.rewards[id].points;
-        this.log.currentRewards.push(id);
+        var pos = recalculatePosition();
+        this.log.currentTarget = Quest.acquire(duration, pos);
+        var cq = this.log.currentTarget;
+        while(cq == this.log.currentTarget) {
+
+        }
     }
 };
