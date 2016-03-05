@@ -228,6 +228,11 @@ function goTestPage()
     console.log("Alles gut!!");
     window.location="test.html";
 }
+function goGuiPage()
+{
+    console.log("Alles gut!!");
+    window.location="gui.html";
+}
 function goHomePage()
 {
     window.location="index.html";
