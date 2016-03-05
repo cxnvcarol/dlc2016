@@ -3,6 +3,12 @@
  */
 var fraportCheckinsAuthorization = "Bearer 8c62c669ac72dad461cc6292a5123479";
 
+function parseDateString(dateString) {
+    var pat = /(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)Z/;
+    var res = pat.exec(dateString);
+    return new Date(res[1], res[2] - 1, res[3], res[4], res[5], res[6]);
+};
+
 function FraportCheckins() {
  //   console.log(fraportCheckinsAuthorization);
     this.test;
@@ -96,12 +102,38 @@ function loadFlightDetailsForFlights(airlineAbbrev, flightNumber) {
         async: false,
         success: function (result) {
             data = result;
-            // console.log(typeof result);
             console.log("Successfully loaded all flights with airline " + airlineAbbrev + " and flight number " + flightNumber);
         }
     });
     return data;
 };
+
+function getFlightInformationForNextFlight(flightNumberString) {
+    var pat = /(^\D+)(\d+$)/;
+    var res = pat.exec(flightNumberString);
+
+    var airlineAbbrev = res[1];
+    var flightNumber = res[2];
+
+    var curDate = new Date();
+    var curMinDist = 100000000000;
+
+    var flightsWithCorrectNumber = loadFlightDetailsForFlights(airlineAbbrev, flightNumber);
+    console.log(flightsWithCorrectNumber);
+    var closestFlightInFuture;
+    for (var i = 0; i < flightsWithCorrectNumber.length; i++) {
+        var flightObject = flightsWithCorrectNumber[i]["flight"];
+        var arrivalTimeString = flightObject["arrival"]["scheduled"];
+        var arrivalTime = parseDateString(arrivalTimeString);
+        var diff = arrivalTime - curDate;
+        if (diff > 0 && diff < curMinDist) {
+            curMinDist = diff;
+            closestFlightInFuture = flightObject;
+        }
+    }
+
+    return closestFlightInFuture;
+}
 
 function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
     var data = "";
