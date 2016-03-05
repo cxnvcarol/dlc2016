@@ -90,8 +90,11 @@ var Game = {
     },
     gatherItems: function() {
         // gather shop items
+        return TargetDB.rewards;
     },
     buyItem: function(id) {
         // buy item with given id
+        this.log.currentPoints -= TargetDB.rewards[id].points;
+        this.log.currentRewards.push(id);
     }
 };
