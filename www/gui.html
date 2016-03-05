@@ -142,7 +142,8 @@
 
 
 <script src="js/guiActions.js"></script>
-<script src="js/gui.js"></script>
+<script type="text/javascript" src="cordova.js"></script>s
+<script src="js/index.js"></script>
 
 <script type="text/javascript">
     function fixMap(){
@@ -151,6 +152,7 @@
         leafletMap.fitBounds(mapBounds);
     }, 500);
     }
+    alert("before initializing");
     app.initialize();
 </script>
 
