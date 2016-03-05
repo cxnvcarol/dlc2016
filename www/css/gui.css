@@ -56,6 +56,20 @@
     border: 0px;
 }
 
+.ui-icon-con-info.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/visitor_icon_wht.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 50%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 20px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
 .ui-icon-pgo.gui-btn {
     margin-left:auto;
     margin-right:auto;

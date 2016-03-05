@@ -1,3 +1,38 @@
+// set airport data
+var positionDataFra = new FraportTransits();
+var circleArrayFrapos = new Array();
+
+function addFraPositionsToMap()
+{
+    leafletMap.remove();
+    leafletMap = L.map('map').fitBounds(mapBounds);
+    L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(leafletMap);
+
+
+    var counter = 0;
+    for(var test in positionDataFra.allSites)
+    {
+        var site = positionDataFra.allSites[test];
+        if(site.terminal != null && site.latitude != undefined) {
+            circleArrayFrapos.push(new L.circle([site["latitude"], site["longitude"]], 5, {
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.5
+            }));
+            leafletMap.addLayer(circleArrayFrapos[counter]);
+            circleArrayFrapos[counter].bindPopup(site.name);
+            counter++;
+        }
+    }
+
+    console.log("array length: " + circleArrayFrapos.length);
+}
+
+
+
 
 // set Beacon data
 var beaconData = "";
@@ -7,15 +42,6 @@ $.ajax({
     airportCode:"FRA",
     async:false,
     success: function(data){beaconData = data;console.log("successfully loaded beacon data.")}
-});
-
-// initialize background maps
-var tileData_0 ="";
-
-$.ajax({
-    url: "img/0/metadata.json",
-    async:false,
-    success: function(dataTile){tileData_0 = dataTile;console.log("successfully loaded tile data.")}
 });
 
 
@@ -44,7 +70,10 @@ function addBeaconToMap()
 {
     leafletMap.remove();
     leafletMap = L.map('map').fitBounds(mapBounds);
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap);
+    L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(leafletMap);;
 
     circleArray = [];
     circleArray.length = 0;
@@ -84,4 +113,8 @@ function goOneFloorDown()
 }
 
 
+
+
+
 addBeaconToMap();
+addFraPositionsToMap();
