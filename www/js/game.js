@@ -83,7 +83,7 @@ var Quest = {
         return target;
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
-    follow: function(target, currentPosition, distFromCurr, arrowWidth) {
+    follow: function(target, currentPosition, distFromCurr, arrowWidth, arrowHeight) {
         var normalize = function(vec) {
             var len = Math.sqrt(vec.x * vec.x + vec.y * vec.y);
             return {
@@ -110,12 +110,12 @@ var Quest = {
             y: currentPosition.y + distFromCurr * direction.y
         };
         var e_1 = {
-            x: currentPosition.x - arrowWidth * normal.x,
-            y: currentPosition.y - arrowWidth * normal.y
+            x: currentPosition.x - arrowWidth * normal.x + arrowHeight * direction.x,
+            y: currentPosition.y - arrowWidth * normal.y + arrowHeight * direction.y
         };
         var e_2 = {
-            x: currentPosition.x + arrowWidth * normal.x,
-            y: currentPosition.y + arrowWidth * normal.y
+            x: currentPosition.x + arrowWidth * normal.x + arrowHeight * direction.x,
+            y: currentPosition.y + arrowWidth * normal.y + arrowHeight * direction.y
         };
         drawArrow(
             Math.acos(p.y / R), Math.atan2(p.x, p.y),
