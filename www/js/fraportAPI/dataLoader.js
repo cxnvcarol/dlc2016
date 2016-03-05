@@ -163,8 +163,6 @@ function getTimeTillNextFlight(flightNumberString) {
     return curMinDist / 1000;
 };
 
-getTimeTillNextFlight("LH915");
-
 function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
     var data = "";
     $.ajax({
@@ -179,6 +177,81 @@ function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
         }
     });
     return data[0]["flight"];
+};
+
+function FraportTransits() {
+    this.test;
+    $.ajax({
+        headers: {Authorization: fraportCheckinsAuthorization},
+        url: "https://developer.fraport.de/api/transittimes/1.0/transittime/",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            test = result;
+            console.log(result);
+            console.log("Successfully loaded all transit time data");
+        }
+    });
+    this.data = test;
+
+    this.allSites = {};
+
+    var j = 0;
+    for (var i in this.data) {
+        j++;
+        var startSiteName = this.data[i]["path"]["startingPoint"]["name"];
+        var endSiteName = this.data[i]["path"]["destination"]["name"];
+        var distance = this.data[i]["path"]["distance"];
+        var transitTime = this.data[i]["path"]["transitTime"];
+        if (undefined == this.allSites[startSiteName]) {
+            this.allSites[startSiteName] = this.data[i]["path"]["startingPoint"];
+        }
+      //  console.log(this.allSites[startSiteName]);
+        this.allSites[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
+      //  console.log(this.allSites);
+    }
+    console.log(j);
+    console.log(this.allSites);
+};
+
+function toRadians(angle) {
+    return Math.PI * angle / 180;
+}
+
+function distanceBetweenPositions(lat1, long1, lat2, long2) {
+    var R = 6371000; // metres
+    var deltaPhi = lat2-lat1;
+    var deltaLambda = long2-long1;
+
+    var a = Math.sin(deltaPhi/2) * Math.sin(deltaPhi/2) +
+        Math.cos(lat1) * Math.cos(lat1) *
+        Math.sin(deltaLambda/2) * Math.sin(deltaLambda/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    var d = R * c;
+};
+
+FraportTransits.prototype = {
+    getSiteNearestToMe : function(longitude, latitude) {
+        var smalledstDistance = 1000000000000;
+        var curClosestSite;
+        for (var site in this.allSites) {
+            var siteLong = site["longitude"];
+            var siteLat  = site["latitude"];
+            var dist = distanceBetweenPositions(siteLat, siteLong, latitude, longitude);
+            if (dist < smallestDistance) {
+                curClosestSite = this.allSites[site];
+                smalledstDistance = dist;
+            }
+        }
+        return curClosestSite;
+    },
+    getSitesInTimeRadiusSmaller : function (longitude, latitude, time) {
+
+    },
+    getSitesInDistanceSmaller: function (longitude, latitude, distance) {
+
+    }
 };
 
 function FraportGates() {
