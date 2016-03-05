@@ -3,6 +3,8 @@
  */
 
 //Get time left to catch connection
+var shouldStopPlaying = false;
+
 function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
@@ -20,6 +22,8 @@ function startCountdown() {
 
     setInterval(function(){
         time=time-1;
+        if (time <= 3600)   ///// TODO compute traveltime distance from you to the gate and perhaps even the delay through customs/security
+            shouldStopPlaying = true;
         var hours = Math.floor(time / 3600);
         var minutes = Math.floor((time / 60) % 60);
         var seconds = Math.floor(time % 60);
