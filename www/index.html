@@ -19,7 +19,6 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<!DOCTYPE html>
 
 <html>
 <head lang="en">
@@ -34,7 +33,11 @@
 <body>
     <header>
         <h2 style = "text-align: center"> THE ULTIMATE BEACON MAP!! <br/></h2>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
     </header>
+
+    
 
     <div id="map"></div>
     <script src="js/3rdparty/jquery-2.2.1.min.js"></script>
@@ -49,6 +52,12 @@
 
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
+
+    <button id="testbtn" onclick="goTestPage()">Go to Test page</button>
+    
+    <script type="text/javascript">
+        app.initialize();
+    </script>
 </body>
 
 </html>

@@ -73,6 +73,9 @@
     <access origin="*" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <plugin name="com.phonegap.plugins.barcodescanner" spec="2.0.0" source="pgb" />
+
+    <plugin name="com.unarin.cordova.beacon" spec="3.2.1" source="pgb" />
+
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
