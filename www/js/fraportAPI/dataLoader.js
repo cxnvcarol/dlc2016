@@ -159,7 +159,6 @@ function getTimeTillNextFlight(flightNumberString) {
             closestFlightInFuture = flightObject;
         }
     }
-    console.log(curMinDist / 1000);
     return curMinDist / 1000;
 };
 
@@ -188,7 +187,6 @@ function FraportTransits() {
         async: false,
         success: function (result) {
             test = result;
-            console.log(result);
             console.log("Successfully loaded all transit time data");
         }
     });
@@ -206,13 +204,46 @@ function FraportTransits() {
         if (undefined == this.allSites[startSiteName]) {
             this.allSites[startSiteName] = this.data[i]["path"]["startingPoint"];
         }
-      //  console.log(this.allSites[startSiteName]);
+        if (undefined == this.allSites[endSiteName])
+            this.allSites[endSiteName] = this.data[i]["path"]["destination"];
         this.allSites[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
-      //  console.log(this.allSites);
+        this.allSites[endSiteName][startSiteName] = { distance : distance, transitTime : transitTime };
     }
-    console.log(j);
-    console.log(this.allSites);
+
+    var waitingTimeData = "";
+    $.ajax({
+        headers: {Authorization: fraportCheckinsAuthorization},
+        url: "https://developer.fraport.de/api/waitingperiods/1.0/waitingperiod",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            waitingTimeData = result;
+            console.log("Successfully loaded all waiting times");
+        }
+    });
+
+    for (var waitingDataContainer in waitingTimeData) {
+        var processsite = waitingTimeData[waitingDataContainer]["processSite"];
+        this.allSites[processsite["name"]]["hasWaitingTime"] = true;
+    }
 };
+
+function getCurrentWaitingTime(siteName) {
+    var waitingTimeData = "";
+    $.ajax({
+        headers: {Authorization: fraportCheckinsAuthorization},
+        url: "https://developer.fraport.de/api/waitingperiods/1.0/waitingperiod/" + siteName,
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            waitingTimeData = result;
+            console.log(result);
+            console.log("Successfully loaded waiting times for: " + siteName);
+        }
+    });
+
+    return waitingTimeData[0]["processSite"]["waitingTime"]["currentWait"];
+}
 
 function toRadians(angle) {
     return Math.PI * angle / 180;
@@ -247,10 +278,30 @@ FraportTransits.prototype = {
         return curClosestSite;
     },
     getSitesInTimeRadiusSmaller : function (longitude, latitude, time) {
-
+        var results = [];
+        var closestSite = this.getSiteNearestToMe(longitude, latitude);
+        for (var sitename in this.allSites) {
+            if (sitename[closestSite["name"]] != undefined) {
+                var dist = sitename[closestSite["name"]].transitTime;
+                if (dist < time) {
+                    results.push(this.allSites[sitename]);
+                }
+            }
+        }
+        return results;
     },
     getSitesInDistanceSmaller: function (longitude, latitude, distance) {
-
+        var results = [];
+        var closestSite = this.getSiteNearestToMe(longitude, latitude);
+        for (var sitename in this.allSites) {
+            if (sitename[closestSite["name"]] != undefined) {
+                var dist = distanceBetweenPositions(latitude, longitude, closestSite.latitude, closestSite.longitude);
+                if (dist < distance) {
+                    results.push(this.allSites[sitename]);
+                }
+            }
+        }
+        return results;
     }
 };
 
@@ -263,8 +314,6 @@ function FraportGates() {
         async: false,
         success: function (result) {
             test = result;
-            console.log(result.length);
-            console.log(result);
             console.log("Successfully loaded all gate data");
         }
     });
@@ -273,6 +322,6 @@ function FraportGates() {
     for (var i in this.data) {
         this.gatesByName[this.data[i]["gate"]["name"]] = this.data[i]["gate"];
     }
-};
+}
 
 console.log("DataLoader script loaded");
