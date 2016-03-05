@@ -91,7 +91,6 @@ function recalculatePosition() {
     $('#mypos').text("pos: "+app.currentPosition);
     var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
     return app.currentPosition;
-
 }
 
 app.startScanForBeacons = function()

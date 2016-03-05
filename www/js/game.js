@@ -64,7 +64,7 @@ var TargetDB = {
     rewards: [
         {
             shopName: McDonalds,
-            descr: '50% Off a Happy Meal',
+            descr: '50% Off a McMenu',
             points: 10
         },
         {
@@ -79,8 +79,19 @@ var Quest = {
     // assign a quest to the player
     acquire: function(duration, currentPosition) {
         // based on interests and available time select quest/target
-
-        return target;
+        var closest = {id: 0, dist: Infinity};
+        for(i = 0; i < TargetDB.targets.length; i++) {
+            d = distanceBetweenPositions(
+                currentPosition.lati,
+                currentPosition.long,
+                TargetDB.targets[i].position.latitude,
+                TargetDB.targets[i].position.longitude);
+            if(d <= closest.dist && $.inArray(closest.id, Game.log.targetHistory) < 0) {
+                closest.dist = d;
+                closest.id = i;
+            }
+        }
+        return closest.id;
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
     follow: function(target, currentPosition, distFromCurr, arrowWidth, arrowHeight) {
@@ -145,14 +156,11 @@ var Game = {
     },
     start: function(duration) {
         // start game
-    },
-    gatherItems: function() {
-        // gather shop items
-        return TargetDB.rewards;
-    },
-    buyItem: function(id) {
-        // buy item with given id
-        this.log.currentPoints -= TargetDB.rewards[id].points;
-        this.log.currentRewards.push(id);
+        var pos = recalculatePosition();
+        this.log.currentTarget = Quest.acquire(duration, pos);
+        var cq = this.log.currentTarget;
+        while(cq == this.log.currentTarget) {
+
+        }
     }
 };
