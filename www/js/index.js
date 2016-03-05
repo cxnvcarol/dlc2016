@@ -41,6 +41,7 @@ var app = {
 
         //Other initializations should be before this line:
         console.log("before received event");
+        //alert("device ready!");
         app.receivedEvent('deviceready');
         console.log("after receiving the event");//this line is never executed.
 
