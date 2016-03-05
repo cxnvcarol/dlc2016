@@ -20,8 +20,8 @@ $.ajax({
 
 
 var mapBounds = new L.LatLngBounds(
-    new L.LatLng(50.056105, 8.591472),
-    new L.LatLng(50.056731, 8.593620));
+    new L.LatLng(50.040178, 8.556086),
+    new L.LatLng(50.056731, 8.597244));
 
 var leafletMap = L.map('map').fitBounds(mapBounds);
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap);
@@ -43,7 +43,7 @@ var circleArray = new Array();
 function addBeaconToMap()
 {
     leafletMap.remove();
-    leafletMap = L.map('map').setView([beaconData[0].latitude, beaconData[0].longitude], 13);;
+    leafletMap = L.map('map').fitBounds(mapBounds);
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap);
 
     circleArray = [];
