@@ -136,10 +136,62 @@
     height: 30px !important;
 }
 
-.ui-label {
+.ui-label.challenge {
+    background-image: url("../img/challenge_lb.svg") !important;
     background-color: rgba(255,255,255,0.6) !important;
-    background-size: 30%;
-    background-position: center  !important;
+    background-size: 40%;
+    padding-left: -5%;
+    background-position: center center  !important;
     background-repeat: no-repeat  !important;
-    height: 30px !important;
+    height: 50px !important;
+}
+
+.p-intro {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+    font-size: 16px;
+    font-family: Calibri;
+}
+
+.ui-icon-selquest.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/selquest_btn.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 50%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 20px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
+.gui-quest-btns {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10%;
+    width: 70% !important;
+}
+
+
+.ui-icon-iquest {
+     margin-left:auto;
+     margin-right:auto;
+     margin-top:20px;
+     background-size: 50%;
+     background-color: rgba(255,255,255,0.6) !important;
+     height: 20px !important;
+     width: 50% !important;
+ }
+
+.ui-icon-iquest.ui-btn-a:hover {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    background-size: 50%;
+    background-color: rgba(255,0,0,0.6) !important;
+    height: 20px !important;
+    width: 50% !important;
 }
