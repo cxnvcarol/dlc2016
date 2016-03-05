@@ -112,6 +112,7 @@ function getFlightInformationForNextFlight(flightNumberString) {
     var pat = /(^\D+)(\d+$)/;
     var res = pat.exec(flightNumberString);
 
+
     var airlineAbbrev = res[1];
     var flightNumber = res[2];
 

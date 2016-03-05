@@ -1,0 +1,95 @@
+.ui-page{
+    background: linear-gradient(45deg, rgba(173,255,47,1) 0%, rgba(126,226,237,1) 100%); /* w3c */ !important;
+    /*background-image:linear-gradient(to bottom, #72c5c2, #6bc36c); /* Standard syntax; must be last */
+    background-size: cover;
+    background-size:100% 100%;
+}
+
+.gui-welcome {
+    background-image: url("../img/travelQuest_icon.svg") !important;
+    background-color: rgba(255,255,255,0.6) !important;
+    padding-top: 5%;
+    background-size: 90%;
+    background-position: center  !important;
+    background-repeat: no-repeat  !important;
+    height: 70px !important;
+}
+
+.ui-btn.gui-btn {
+    background-color: rgba(0,0,0,0.6) !important;
+    background-position: center  !important;
+    height: 40px !important;
+    width: 80% !important;
+    border: 0px;
+}
+
+.ui-icon-passenger.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/passenger_icon_wht.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 50%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 20px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
+.ui-icon-visitor.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/visitor_icon_wht.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 50%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 20px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
+.ui-icon-pgo.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/go_btn.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 80%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 50px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
+.ui-icon-pplay.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-image: url("../img/play_btn.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 80%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 50px !important;
+    width: 60% !important;
+    border: 0px;
+}
+
+.ui-icon-pinfo.gui-btn {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+
+    background-image: url("../img/info_btn.svg") !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    background-size: 80%;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important;
+    height: 50px !important;
+    width: 60% !important;
+    border: 0px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="js/3rdparty/jquery.mobile-1.4.5.min.css">
+    <!-- Include the jQuery library -->
+    <script src="js/3rdparty/jquery-2.2.1.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Include custom stylesheets -->
+    <link rel="stylesheet" href="css/gui.css">
+
+
+</head>
+<body>
+
+//-------------------------------------------------
+//Welcome: Users must define their role
+//-------------------------------------------------
+<div data-role="page" id="welcome">
+    <div class="gui-welcome" data-role="header">
+        <h1></h1>
+    </div>
+    <div data-role="main" class="ui-content" style="padding-top: 50px;">
+        <p>This application will help you to navigate Frankfurt Airport. Please log in as a: </p><br>
+        <a href="#pass-con-info" class="ui-icon-passenger ui-nodisc-icon gui-btn"  data-role="button" data-icon="passenger" data-theme="a"></a>
+        <a href="#pass-con-info" class="ui-icon-visitor ui-nodisc-icon gui-btn"  data-role="button" data-icon="visitor" data-theme="a"></a>
+    </div>
+</div>
+//-------------------------------------------------
+
+
+//-------------------------------------------------
+//Passengers: Enter connection information
+//-------------------------------------------------
+<div data-role="page" id="pass-con-info">
+    <div data-role="header">
+        <h1>Connection Info</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <p>Please, enter the ID of your next connection:</p><br>
+        <label for="con-info">(e.g., flight number)</label>
+        <input type="text" name="con-info" id="con-info" value=""  />
+        <input type="button" name="con-submit" id="con-submit" value="Submit" onclick="location='#pass-time-left'" />
+        <a href="#dialogone">Go to CLUE</a>
+    </div>
+</div>
+//-------------------------------------------------
+
+//-------------------------------------------------
+//Calculate time: Time left is shown, countdown starts!
+//-------------------------------------------------
+<div data-role="page" id="pass-time-left">
+    <div class="gui-welcome" data-role="header">
+        <h1></h1>
+    </div>
+    <div data-role="main" class="ui-content" style="padding-top: 50px;">
+        <p name="time-left" id="time-left"></p><br>
+        <a href="#pass-options">continue</a>
+    </div>
+</div>
+//-------------------------------------------------
+
+//-------------------------------------------------
+<div data-role="page" id="pass-options">
+    <div class="gui-welcome" data-role="header">
+        <h1></h1>
+    </div>
+    <div data-role="main" class="ui-content" style="padding-top: 50px;">
+        <a href="#pass-go" class="ui-icon-pgo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pgo" data-theme="a"></a>
+        <a href="#pass-play" class="ui-icon-pplay ui-nodisc-icon gui-btn"  data-role="button" data-icon="pplay" data-theme="a"></a>
+        <a href="#pass-info" class="ui-icon-pinfo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pinfo" data-theme="a"></a>
+    </div>
+</div>
+//-------------------------------------------------
+
+//-------------------------------------------------
+<div data-role="page" data-dialog="true" id="dialogone">
+    <div data-role="header">
+        <h1>I'm A Dialog Box!</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <p>The dialog box is different from a normal page, it is displayed on top of the current page and it will not span the entire width of the page. The dialog has also an icon of "X" in the header to close the box.</p>
+        <a href="#pageone">Go to Page One</a>
+    </div>
+
+    <div data-role="footer">
+        <h1>Footer Text In Dialog</h1>
+    </div>
+</div>
+//-------------------------------------------------
+
+<!-- Include the guiTest javascript -->
+<script src="js/fraportAPI/dataLoader.js"></script>
+<script src="js/guiActions.js"></script>
+
+</body>
+</html>
