@@ -8,6 +8,10 @@ var shouldStopPlaying = false;
 function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
+    if(flightId)
+    {
+        flightId=flightId.trim();
+    }
     var time = getTimeTillNextFlight(flightId);
 
     var hours = Math.floor(time / 3600);

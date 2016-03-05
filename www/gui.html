@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="css/leaflet.css" />
 
     <script src="js/leaflet.js"></script>
-
-
 </head>
 <body>
 
@@ -78,7 +76,7 @@
         <h1></h1>
     </div>
     <div data-role="main" class="ui-content" style="padding-top: 50px;">
-        <a href="#pass-go" class="ui-icon-pgo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pgo" data-theme="a" onclick="fixMap()"></a>
+        <a href="#pass-go" class="ui-icon-pgo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pgo" data-theme="a" onclick="fixMap(0)"></a>
         <a href="#pass-play" class="ui-icon-pplay ui-nodisc-icon gui-btn"  data-role="button" data-icon="pplay" data-theme="a"></a>
         <a href="#pass-info" class="ui-icon-pinfo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pinfo" data-theme="a"></a>
     </div>
@@ -96,6 +94,15 @@
     <script src="js/kaethesBeacons.js"></script>
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
+
+    <div id="temporalDiv">
+        Pos: <p id="mypos"></p><br>
+        Msg: <p id="msg"></p>
+        <br><br>
+
+        Puntos:  <p id="dummie"></p><br>
+        <p id="sensed"></p>
+    </div>
 </div>
 <!----------------------------------------------------->
 
@@ -129,16 +136,16 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-squest">COUNTDOWN</h3>
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
-    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap()">
+    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
         Fight the wolfs!
     </a>
-    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" >
+    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
         QUEST 2
     </a>
-    <a href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a">
+    <a href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a" onclick="fixMap(3)">
         QUEST 3
     </a>
-    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" >
+    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" onclick="fixMap(4)">
         QUEST 4
     </a>
     </div>
@@ -219,17 +226,34 @@
 
 <script src="js/guiActions.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<!-- <script src="js/index.js"></script>-->
+<script src="js/index.js"></script>
 
 <script type="text/javascript">
-    function fixMap(){
+    function fixMap(idMap){
+        var maptoFix=leafletMap;
+        switch(idMap)
+        {
+            case 1:
+                maptoFix=leafletMap1;
+                break;
+            case 2:
+                maptoFix=leafletMap2;
+                break;
+            case 3:
+                maptoFix=leafletMap3;
+                break;
+            case 4:
+                maptoFix=leafletMap4;
+                break;
+        }
+
     setTimeout(function(){
-        leafletMap.invalidateSize();
-        leafletMap.fitBounds(mapBounds);
+        maptoFix.invalidateSize();
+        maptoFix.fitBounds(mapBounds);
     }, 500);
     }
     //alert("before initializing");
-    //app.initialize();
+    app.initialize();
 </script>
 
 

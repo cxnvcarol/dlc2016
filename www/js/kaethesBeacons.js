@@ -84,7 +84,7 @@ function addBeaconToMap()
     {
         if(beaconData[test].latitude != undefined) {
             if(beaconData[test].floor == currentFloor) {
-                drawOnMap(beaconData[test].latitude, beaconData[test].longitude, beaconData[test].name, 'red');
+                drawOnMap(beaconData[test].latitude, beaconData[test].longitude, beaconData[test].name, 'blue');
             }
         }
     }
@@ -115,7 +115,7 @@ function drawOnMap(lat, long, name, color)
 {
     if(aPointOnTheMap != null) {removePoint(aPointOnTheMap)};
 
-    aPointOnTheMap = new L.circle([lat, long], 5, {
+    aPointOnTheMap = new L.circle([lat, long], 8, {
         color: color,
         fillColor: color,
         fillOpacity: 0.5
@@ -152,7 +152,7 @@ function removeArrow(triInstance)
 
 function drawMarkerOnMap(lat, lng, name, icon)
 {
-    //alert("position: "+app.currentPosition);
+    alert("position: "+app.currentPosition);
     removeMarker(aPointOnTheMap);
     var myIcon = L.icon({
         iconUrl: icon
