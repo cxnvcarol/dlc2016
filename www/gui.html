@@ -253,7 +253,14 @@
     }, 500);
     }
     //alert("before initializing");
+    try{
     app.initialize();
+    }
+    catch(e)
+    {
+        console.log("Are you in the browser?... check this out:");
+        console.log(e);
+    }
 </script>
 
 
