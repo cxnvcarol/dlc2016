@@ -152,7 +152,7 @@ function removeArrow(triInstance)
 
 function drawMarkerOnMap(lat, lng, name, icon)
 {
-    alert("position: "+app.currentPosition);
+    //alert("position: "+app.currentPosition);
     removeMarker(aPointOnTheMap);
     var myIcon = L.icon({
         iconUrl: icon
@@ -161,7 +161,7 @@ function drawMarkerOnMap(lat, lng, name, icon)
     aPointOnTheMap =  new L.marker([lat, lng]).addTo(leafletMap);
     aPointOnTheMap.setIcon(myIcon);
     aPointOnTheMap.bindPopup(name);
-    alert("map updated");
+    //alert("map updated");
     return aPointOnTheMap;
 }
 function removeMarker(m)
