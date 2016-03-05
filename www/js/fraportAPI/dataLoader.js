@@ -123,7 +123,7 @@ function getFlightInformationForNextFlight(flightNumberString) {
     var closestFlightInFuture;
     for (var i = 0; i < flightsWithCorrectNumber.length; i++) {
         var flightObject = flightsWithCorrectNumber[i]["flight"];
-        var arrivalTimeString = flightObject["arrival"]["scheduled"];
+        var arrivalTimeString = flightObject["departure"]["scheduled"];
         var arrivalTime = parseDateString(arrivalTimeString);
         var diff = arrivalTime - curDate;
         if (diff > 0 && diff < curMinDist) {
@@ -150,7 +150,7 @@ function getTimeTillNextFlight(flightNumberString) {
     var closestFlightInFuture;
     for (var i = 0; i < flightsWithCorrectNumber.length; i++) {
         var flightObject = flightsWithCorrectNumber[i]["flight"];
-        var arrivalTimeString = flightObject["arrival"]["scheduled"];
+        var arrivalTimeString = flightObject["departure"]["scheduled"];
         var arrivalTime = parseDateString(arrivalTimeString);
         var diff = arrivalTime - curDate;
         if (diff > 0 && diff < curMinDist) {
