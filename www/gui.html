@@ -90,7 +90,7 @@
 <!----------------------------------------------------->
 <div data-role="page" id="pass-go">
     <div class="gui-countdown" data-role="header">
-        <h3 name="counter-id" id="counter-label">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-go">HERE IS MY COUNTDOWN</h3>
     </div>
     <div id="map"></div>
     <script src="js/kaethesBeacons.js"></script>
@@ -99,6 +99,25 @@
 </div>
 <!----------------------------------------------------->
 
+<!----------------------------------------------------->
+<!--Main page for option: play
+<!----------------------------------------------------->
+<div data-role="page" id="pass-play">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-play">HERE IS MY COUNTDOWN</h3>
+    </div>
+    <div style="padding-top:10px" class="gui-play-hintro" data-role="main">
+        <h3 class="ui-label" name="cha-id" id="cha-id"><img src="img/challenge_lb.svg"></h3>
+    </div>
+    <div class="gui-play-dintro" data-role="main">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    </div>
+
+
+</div>
+<!----------------------------------------------------->
 
 <!----------------------------------------------------->
 <!--Dialog sample for clues
@@ -123,7 +142,8 @@
 
 
 <script src="js/guiActions.js"></script>
-<script src="js/gui.js"></script>
+<script type="text/javascript" src="cordova.js"></script>s
+<script src="js/index.js"></script>
 
 <script type="text/javascript">
     function fixMap(){
@@ -132,6 +152,7 @@
         leafletMap.fitBounds(mapBounds);
     }, 500);
     }
+    alert("before initializing");
     app.initialize();
 </script>
 
