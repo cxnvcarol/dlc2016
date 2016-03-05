@@ -2,24 +2,6 @@
 var positionDataFra = new FraportTransits();
 var circleArrayFrapos = new Array();
 
-function addFraPositionsToMap()
-{
-    leafletMap.remove();
-    leafletMap = L.map('map').fitBounds(mapBounds);
-    L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(leafletMap);
-
-
-    for(var test in positionDataFra.allSites)
-    {
-        var site = positionDataFra.allSites[test];
-        if(site.terminal != null && site.latitude != undefined) {
-            drawOnMap(site.latitude, site.longitude, site.name, 'blue')
-        }
-    }
-}
 
 
 
@@ -35,20 +17,49 @@ $.ajax({
 });
 
 
+
+// initialize map drawing stuff
+
 var mapBounds = new L.LatLngBounds(
     new L.LatLng(50.040178, 8.556086),
     new L.LatLng(50.056731, 8.597244));
 
 var leafletMap = L.map('map').fitBounds(mapBounds);
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap);
+L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(leafletMap);
 
-var tileOptions = {
-    minZoom: 17,
-    maxZoom: 21,
-    tileSize: 256,
-    opacity: 1.0,
-    zIndex: 17,
-    tms: false};
+
+
+
+// draw fraport data on the map
+
+function addFraPositionsToMap()
+{
+    //leafletMap.remove();
+    //leafletMap = L.map('map').fitBounds(mapBounds);
+    /*L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(leafletMap);*/
+
+
+    for(var test in positionDataFra.allSites)
+    {
+        var site = positionDataFra.allSites[test];
+        if(site.terminal != null && site.latitude != undefined) {
+            drawOnMap(site.latitude, site.longitude, site.name, 'blue');
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 var currentFloor = 0;
@@ -100,7 +111,7 @@ function goOneFloorDown()
 var aPointOnTheMap;
 function drawOnMap(lat, long, name, color)
 {
-    removePoint(aPointOnTheMap);
+    if(aPointOnTheMap != null) {removePoint(aPointOnTheMap)};
 
     aPointOnTheMap = new L.circle([lat, long], 5, {
         color: color,
@@ -113,7 +124,7 @@ function drawOnMap(lat, long, name, color)
 
 function removePoint(pointInstance)
 {
-    pointInstance.removeFrom(leafletMap);
+    leafletMap.removeLayer(pointInstance);
 }
 
 
@@ -122,7 +133,7 @@ function removePoint(pointInstance)
 var polygon;
 function drawArrow(spitze_lat, spitze_long, hinten1_lat, hinten1_long, hinten2_lat, hinten2_long)
 {
-    removeArrow(polygon);
+    if(polygon != null) {removeArrow(polygon)};
 
     polygon = L.polygon([
         [spitze_lat, spitze_long],
@@ -133,10 +144,10 @@ function drawArrow(spitze_lat, spitze_long, hinten1_lat, hinten1_long, hinten2_l
 
 function removeArrow(triInstance)
 {
-    triInstance.removeFrom(leafletMap);
+    triInstance.removeLayer(leafletMap);
 }
 
 
 
-addBeaconToMap();
+//addBeaconToMap();
 addFraPositionsToMap();
