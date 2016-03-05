@@ -97,8 +97,11 @@ function goOneFloorDown()
 
 
 // generic draw on map function
+var aPointOnTheMap;
 function drawOnMap(lat, long, name, color)
 {
+    removePoint(aPointOnTheMap);
+
     aPointOnTheMap = new L.circle([lat, long], 5, {
         color: color,
         fillColor: color,
@@ -107,6 +110,32 @@ function drawOnMap(lat, long, name, color)
     leafletMap.addLayer(aPointOnTheMap);
     aPointOnTheMap.bindPopup(name);
 }
+
+function removePoint(pointInstance)
+{
+    pointInstance.removeFrom(leafletMap);
+}
+
+
+
+// generic triangle drawing function
+var polygon;
+function drawArrow(spitze_lat, spitze_long, hinten1_lat, hinten1_long, hinten2_lat, hinten2_long)
+{
+    removeArrow(polygon);
+
+    polygon = L.polygon([
+        [spitze_lat, spitze_long],
+        [hinten1_lat, hinten1_long],
+        [hinten2_lat, hinten2_long]
+    ]).addTo(leafletMap);
+}
+
+function removeArrow(triInstance)
+{
+    triInstance.removeFrom(leafletMap);
+}
+
 
 
 addBeaconToMap();
