@@ -62,10 +62,10 @@
         <h1></h1>
     </div>
     <div data-role="main" class="ui-content" style="padding-top: 50px;">
-        <h1 name="time-left" id="time-left"></h1><br>
-        <img src="img/time_icon_wht.svg" style="margin:auto; width:200px;display:block" />
 
-        <a href="#pass-options">continue</a>
+        <img src="img/time_icon_wht.svg" style="margin:auto; width:200px;display:block" />
+        <h1 style="color: #0055d4" align="center" name="time-left" id="time-left"></h1><br>
+        <a href="#pass-options" class="ui-icon-start ui-nodisc-icon gui-btn"  data-role="button" data-icon="start" data-theme="a"></a>
     </div>
 </div>
 <!----------------------------------------------------->
@@ -89,8 +89,8 @@
 <!--Main page for option: go
 <!----------------------------------------------------->
 <div data-role="page" id="pass-go">
-    <div class="gui-welcome" data-role="header">
-        <h1></h1>
+    <div class="gui-countdown" data-role="header">
+        <h3 name="counter-id" id="counter-label">HERE IS MY COUNTDOWN</h3>
     </div>
     <div id="map"></div>
     <script src="js/kaethesBeacons.js"></script>

@@ -14,6 +14,32 @@ function startCountdown() {
 
     var tleft = hours + ":" + minutes + ":" + seconds;
     console.log(tleft);
-    return $('#time-left').html(tleft);
+
+    $('#time-left').html(tleft);
+
+
+    setInterval(function(){
+        time=time-1;
+        var hours = Math.floor(time / 3600);
+        var minutes = Math.floor((time / 60) % 60);
+        var seconds = Math.floor(time % 60);
+        var tleft = hours + ":" + minutes + ":" + seconds;
+
+        $('#counter-label').html(tleft);
+
+    },1000);
 
 }
+
+//
+// function polledExecutioner(functionToBeCalledInAFixedInterval, fixedTimeIntervalInMilliSeconds) {
+
+function updateCountdown(){
+    var flightId = document.getElementById('con-info').value;
+    var flightTime = getTimeTillNextFlight(flightId);
+
+    $('#counter-label').html(polledExecutioner(updateCountdown, 1000));
+
+}
+
+//polledExecutioner(updateCountdown, 1000);
