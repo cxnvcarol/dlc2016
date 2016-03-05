@@ -135,6 +135,35 @@ function getFlightInformationForNextFlight(flightNumberString) {
     return closestFlightInFuture;
 }
 
+function getTimeTillNextFlight(flightNumberString) {
+    var pat = /(^\D+)(\d+$)/;
+    var res = pat.exec(flightNumberString);
+
+    var airlineAbbrev = res[1];
+    var flightNumber = res[2];
+
+    var curDate = new Date();
+    var curMinDist = 100000000000;
+
+    var flightsWithCorrectNumber = loadFlightDetailsForFlights(airlineAbbrev, flightNumber);
+    console.log(flightsWithCorrectNumber);
+    var closestFlightInFuture;
+    for (var i = 0; i < flightsWithCorrectNumber.length; i++) {
+        var flightObject = flightsWithCorrectNumber[i]["flight"];
+        var arrivalTimeString = flightObject["arrival"]["scheduled"];
+        var arrivalTime = parseDateString(arrivalTimeString);
+        var diff = arrivalTime - curDate;
+        if (diff > 0 && diff < curMinDist) {
+            curMinDist = diff;
+            closestFlightInFuture = flightObject;
+        }
+    }
+    console.log(curMinDist / 1000);
+    return curMinDist / 1000;
+};
+
+getTimeTillNextFlight("LH915");
+
 function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
     var data = "";
     $.ajax({
