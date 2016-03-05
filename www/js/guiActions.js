@@ -34,16 +34,3 @@ function startCountdown() {
     },1000);
 
 }
-
-//
-// function polledExecutioner(functionToBeCalledInAFixedInterval, fixedTimeIntervalInMilliSeconds) {
-
-function updateCountdown(){
-    var flightId = document.getElementById('con-info').value;
-    var flightTime = getTimeTillNextFlight(flightId);
-
-    $('#counter-label').html(polledExecutioner(updateCountdown, 1000));
-
-}
-
-//polledExecutioner(updateCountdown, 1000);

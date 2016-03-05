@@ -45,8 +45,8 @@
     </div>
 
     <div data-role="main" class="ui-content">
-        <p>Please, enter the ID of your next connection:</p><br>
-        <label for="con-info">(e.g., flight number)</label>
+        <p class="p-intro">Please, enter the ID of your next connection:</p><br>
+        <label class="p-intro" for="con-info">(e.g., flight: LH282, train: ICE717)</label>
         <input type="text" name="con-info" id="con-info" value=""  />
         <a class="ui-icon-submit ui-nodisc-icon gui-btn"  onclick="startCountdown()" data-role="button" data-icon="submit" data-theme="a"></a>
         <a href="#dialogone">Go to CLUE</a>
@@ -90,7 +90,7 @@
 <!----------------------------------------------------->
 <div data-role="page" id="pass-go">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-go">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-go">COUNTDOWN</h3>
     </div>
     <div id="map"></div>
     <script src="js/kaethesBeacons.js"></script>
@@ -104,7 +104,7 @@
 <!----------------------------------------------------->
 <div data-role="page" id="pass-play">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-play">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-play">COUNTDOWN</h3>
     </div>
     <div class="gui-play-hintro" data-role="main">
         <h3 class="ui-label challenge" name="cha-id" id="cha-id"></h3>
@@ -126,19 +126,19 @@
 <!----------------------------------------------------->
 <div data-role="page" id="pass-selquest">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-squest">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-squest">COUNTDOWN</h3>
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
-    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a">
+    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap()">
         Fight the wolfs!
     </a>
-    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a">
+    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" >
         QUEST 2
     </a>
     <a href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a">
         QUEST 3
     </a>
-    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a">
+    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" >
         QUEST 4
     </a>
     </div>
@@ -150,9 +150,16 @@
 <!----------------------------------------------------->
 <div data-role="page" id="p-quest1">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-pq1">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-pq1">COUNTDOWN</h3>
     </div>
-   QUEST 1
+    <div id="quest1map"></div>
+    <script src="js/quest1map.js"></script>
+    <div id="quest1desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
+        <p class="p-intro">You might think airports are boring – nothing more than an unavoidable waypoint on a
+            journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
+        <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
 </div>
 <!----------------------------------------------------->
 
@@ -161,9 +168,9 @@
 <!----------------------------------------------------->
 <div data-role="page" id="p-quest2">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-pq2">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-pq2">COUNTDOWN</h3>
     </div>
-    QUEST 2
+
 </div>
 <!----------------------------------------------------->
 
@@ -172,9 +179,9 @@
 <!----------------------------------------------------->
 <div data-role="page" id="p-quest3">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-pq3">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-pq3">COUNTDOWN</h3>
     </div>
-    QUEST 3
+
 </div>
 <!----------------------------------------------------->
 
@@ -183,9 +190,9 @@
 <!----------------------------------------------------->
 <div data-role="page" id="p-quest4">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">HERE IS MY COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">COUNTDOWN</h3>
     </div>
-    QUEST 4
+
 </div>
 <!----------------------------------------------------->
 
@@ -210,10 +217,9 @@
 
 <!-- Include the guiTest javascript -->
 
-
 <script src="js/guiActions.js"></script>
-<script type="text/javascript" src="cordova.js"></script>s
-<script src="js/index.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<!-- <script src="js/index.js"></script>-->
 
 <script type="text/javascript">
     function fixMap(){
@@ -222,8 +228,8 @@
         leafletMap.fitBounds(mapBounds);
     }, 500);
     }
-    alert("before initializing");
-    app.initialize();
+    //alert("before initializing");
+    //app.initialize();
 </script>
 
 

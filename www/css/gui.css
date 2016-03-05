@@ -8,6 +8,18 @@
 #map {
     height: 300px;
 }
+#quest1map {
+     height: 300px;
+ }
+#quest2map {
+    height: 300px;
+}
+#quest3map {
+    height: 300px;
+}
+#quest4map {
+    height: 300px;
+}
 
 
 .gui-welcome {
@@ -137,7 +149,17 @@
 }
 
 .ui-label.challenge {
-    background-image: url("../img/challenge_lb.svg") !important;
+     background-image: url("../img/challenge_lb.svg") !important;
+     background-color: rgba(255,255,255,0.6) !important;
+     background-size: 40%;
+     padding-left: -5%;
+     background-position: center center  !important;
+     background-repeat: no-repeat  !important;
+     height: 50px !important;
+ }
+
+.ui-label.clue {
+    background-image: url("../img/clue_lb.svg") !important;
     background-color: rgba(255,255,255,0.6) !important;
     background-size: 40%;
     padding-left: -5%;
