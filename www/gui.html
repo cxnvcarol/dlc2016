@@ -16,9 +16,9 @@
 </head>
 <body>
 
-//-------------------------------------------------
-//Welcome: Users must define their role
-//-------------------------------------------------
+<!----------------------------------------------------->
+<!--Welcome: Users must define their role
+<!----------------------------------------------------->
 <div data-role="page" id="welcome">
     <div class="gui-welcome" data-role="header">
         <h1></h1>
@@ -29,12 +29,12 @@
         <a href="#pass-con-info" class="ui-icon-visitor ui-nodisc-icon gui-btn"  data-role="button" data-icon="visitor" data-theme="a"></a>
     </div>
 </div>
-//-------------------------------------------------
+<!----------------------------------------------------->
 
 
-//-------------------------------------------------
-//Passengers: Enter connection information
-//-------------------------------------------------
+<!----------------------------------------------------->
+<!--Passengers: Enter connection information
+<!----------------------------------------------------->
 <div data-role="page" id="pass-con-info">
     <div data-role="header">
         <h1>Connection Info</h1>
@@ -48,11 +48,11 @@
         <a href="#dialogone">Go to CLUE</a>
     </div>
 </div>
-//-------------------------------------------------
+<!----------------------------------------------------->
 
-//-------------------------------------------------
-//Calculate time: Time left is shown, countdown starts!
-//-------------------------------------------------
+<!----------------------------------------------------->
+<!--Calculate time: Time left is shown, countdown starts!
+<!----------------------------------------------------->
 <div data-role="page" id="pass-time-left">
     <div class="gui-welcome" data-role="header">
         <h1></h1>
@@ -62,9 +62,11 @@
         <a href="#pass-options">continue</a>
     </div>
 </div>
-//-------------------------------------------------
+<!----------------------------------------------------->
 
-//-------------------------------------------------
+<!----------------------------------------------------->
+<!--Menu for passenger options: go, play, info
+<!----------------------------------------------------->
 <div data-role="page" id="pass-options">
     <div class="gui-welcome" data-role="header">
         <h1></h1>
@@ -75,9 +77,9 @@
         <a href="#pass-info" class="ui-icon-pinfo ui-nodisc-icon gui-btn"  data-role="button" data-icon="pinfo" data-theme="a"></a>
     </div>
 </div>
-//-------------------------------------------------
+<!----------------------------------------------------->
 
-//-------------------------------------------------
+<!----------------------------------------------------->
 <div data-role="page" data-dialog="true" id="dialogone">
     <div data-role="header">
         <h1>I'm A Dialog Box!</h1>
@@ -85,14 +87,14 @@
 
     <div data-role="main" class="ui-content">
         <p>The dialog box is different from a normal page, it is displayed on top of the current page and it will not span the entire width of the page. The dialog has also an icon of "X" in the header to close the box.</p>
-        <a href="#pageone">Go to Page One</a>
+        <a href="#welcome">Go to Page One</a>
     </div>
 
     <div data-role="footer">
         <h1>Footer Text In Dialog</h1>
     </div>
 </div>
-//-------------------------------------------------
+<!----------------------------------------------------->
 
 <!-- Include the guiTest javascript -->
 <script src="js/fraportAPI/dataLoader.js"></script>
