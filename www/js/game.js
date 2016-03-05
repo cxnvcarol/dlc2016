@@ -12,7 +12,7 @@ var TargetDB = {
                 latitude: 50.0501323567298,
             },
             points: 0
-        }
+        },
 
         {
             name: "StarbucksQuest",
@@ -23,7 +23,7 @@ var TargetDB = {
                 latitude: 50.051372391135324,
             },
             points: 0
-        }
+        },
 
         {
             name: "FossilQuest",
@@ -34,7 +34,7 @@ var TargetDB = {
                 latitude: 50.05015991339804,
             },
             points: 0
-        }
+        },
 
         {
             name: "MDonaldsQuest",
@@ -45,7 +45,7 @@ var TargetDB = {
                 latitude:  50.04784854285611,
             },
             points: 0
-        }
+        },
 
         {
             name: "SpecialQuest",
