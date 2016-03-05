@@ -29,7 +29,7 @@ function startCountdown() {
         var seconds = Math.floor(time % 60);
         var tleft = hours + ":" + minutes + ":" + seconds;
 
-        $('#counter-label').html(tleft);
+        $('.ui-counter').html(tleft);
 
     },1000);
 

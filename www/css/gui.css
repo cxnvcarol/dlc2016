@@ -129,11 +129,17 @@
 
 .gui-countdown {
     background-image: url("../img/tqsmall_icon.svg") !important;
-    background-position:right !important;
+    background-position: top right !important;
     background-color: rgba(255,255,255,0.6) !important;
-    padding-top: 5%;
-    background-size: 15%;
+    background-size: 10%;
+    background-repeat: no-repeat  !important;
+    height: 30px !important;
+}
+
+.ui-label {
+    background-color: rgba(255,255,255,0.6) !important;
+    background-size: 30%;
     background-position: center  !important;
     background-repeat: no-repeat  !important;
-    height: 20px !important;
+    height: 30px !important;
 }
