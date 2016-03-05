@@ -96,6 +96,7 @@ function goOneFloorUp()
 {
     if(currentFloor < 3) currentFloor++;
     console.log(currentFloor);
+    $("#floorTeller").text(currentFloor);
     addBeaconToMap();
 }
 
@@ -103,6 +104,7 @@ function goOneFloorDown()
 {
     if(currentFloor > -1) currentFloor--;
     console.log(currentFloor);
+    $("#floorTeller").text(currentFloor);
     addBeaconToMap();
 }
 
@@ -150,4 +152,4 @@ function removeArrow(triInstance)
 
 
 //addBeaconToMap();
-addFraPositionsToMap();
+//addFraPositionsToMap();
