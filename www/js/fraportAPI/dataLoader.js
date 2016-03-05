@@ -305,6 +305,10 @@ FraportTransits.prototype = {
     }
 };
 
+function polledExecutioner(functionToBeCalledInAFixedInterval, fixedTimeIntervalInMilliSeconds) {
+    setInterval(functionToBeCalledInAFixedInterval, fixedTimeInterval);
+}
+
 function FraportGates() {
     this.test;
     $.ajax({
