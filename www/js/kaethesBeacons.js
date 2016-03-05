@@ -172,5 +172,17 @@ function removeMarker(m)
 }
 
 
+function initiateSpecialQuest(flightNumber)
+{
+
+
+}
+
+
 //addBeaconToMap();
 //addFraPositionsToMap();
+drawOnMap(50.04784854285611, 8.573498725891112, "bla", "blue");
+
+
+// get lat and long of certain positions on the map
+leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});
