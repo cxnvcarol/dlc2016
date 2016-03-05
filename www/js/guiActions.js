@@ -3,7 +3,8 @@
  */
 
 //Get time left to catch connection
-$('#con-submit').click(function() {
+function startCountdown() {
+    window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
     var time = getTimeTillNextFlight(flightId);
 
@@ -15,4 +16,4 @@ $('#con-submit').click(function() {
     console.log(tleft);
     return $('#time-left').html(tleft);
 
-});
+}

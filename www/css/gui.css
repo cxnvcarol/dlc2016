@@ -56,11 +56,11 @@
     border: 0px;
 }
 
-.ui-icon-con-info.gui-btn {
+.ui-icon-submit.gui-btn {
     margin-left:auto;
     margin-right:auto;
     margin-top:10px;
-    background-image: url("../img/visitor_icon_wht.svg") !important;
+    background-image: url("../img/submit_btn.svg") !important;
     background-color: rgba(0,0,0,0.6) !important;
     background-size: 50%;
     background-repeat: no-repeat  !important;
