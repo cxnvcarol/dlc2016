@@ -76,7 +76,7 @@ function populateQuests() {
         app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
     });
     $('#pq1').html(TargetDB.targets[questList[0]].descr);
-    $('#qrs1').click(function() {
+    /*$('#qrs1').click(function() {
         alert('Hallo');
         var code = QRCodeScanner.scan();
         alert(code);
@@ -89,7 +89,7 @@ function populateQuests() {
             Game.log.currentPoints += value.points;
             Game.log.totalPoints += value.points;
         }
-    });
+    });*/
 
 
     $('#q2').html(TargetDB.targets[questList[1]].title);
@@ -138,4 +138,20 @@ function populateQuests() {
             Game.log.totalPoints += value.points;
         }
     });
+}
+
+
+function scanButton() {
+        alert('Hallo');
+        var code = QRCodeScanner.scan();
+        alert(code);
+        var pid = QRCodeMapping[code];
+        alert(pid);
+        var value = Quest.finish(pid, Game.log.currentTarget);
+        alert(value);
+        if(value.success) {
+            Game.log.targetHistory.push(Game.log.currentTarget);
+            Game.log.currentPoints += value.points;
+            Game.log.totalPoints += value.points;
+        }
 }
