@@ -3,7 +3,8 @@
  */
 var QRCodeScanner = {
     scan: function() {
-        cordova.plugins.barcodeScanner.scan(
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        scanner.scan(
             function(result) {
                 if(!result.cancelled) {
                     return result;

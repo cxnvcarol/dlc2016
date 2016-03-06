@@ -97,6 +97,39 @@ function addFraPositionsToMap()
 }
 
 
+var restroomCircles = new Array();
+
+function addRestroomLocationsToMap()
+{
+    for(var circs in restroomCircles)
+    {
+        restroomCircles[circs].removeLayer(leafletMap);
+    }
+
+    //leafletMap.remove();
+    //leafletMap = L.map('map').fitBounds(mapBounds);
+    /*L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+     maxZoom: 18,
+     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+     }).addTo(leafletMap);*/
+    restroomCircles = [];
+    restroomCircles.length = 0;
+
+    console.log(restroomCircles.length);
+
+    for(var rest in restrooms.toiletsObjects) {
+        restroomCircles.push(new L.circle([restrooms.toiletsObjects[rest].position.latitude, restrooms.toiletsObjects[rest].position.longitude], 5, {
+            color: 'blue',
+            fillColor: 'blue',
+            fillOpacity: 0.5
+        }));
+        restroomCircles[rest].addTo(leafletMap);
+    }
+
+    console.log(restroomCircles.length);
+}
+
+
 
 
 
@@ -422,4 +455,5 @@ function getQuestDestinationByName(questName)
 }
 
 // get lat and long of certain positions on the map
-leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});
+//leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + ", " + a.latlng.long);});
+
