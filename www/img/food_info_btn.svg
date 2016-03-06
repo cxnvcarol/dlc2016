@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256.91818"
+   height="50"
+   id="svg6547"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="food_info_btn.svg">
+  <defs
+     id="defs6549" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="9.1733823"
+     inkscape:cy="216.42862"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="463"
+     inkscape:window-height="423"
+     inkscape:window-x="26"
+     inkscape:window-y="26"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata6552">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-365.82662,-698.7908)">
+    <g
+       transform="translate(820.90688,-1116.5476)"
+       id="g6425">
+      <g
+         style="fill:#ffffff"
+         transform="matrix(0.09255814,0,0,0.09255814,-466.30414,1815.3384)"
+         id="g4159-6">
+        <g
+           style="fill:#ffffff"
+           id="g4111-0">
+          <g
+             style="fill:#ffffff"
+             id="g4113-1">
+            <path
+               style="fill:#ffffff"
+               inkscape:connector-curvature="0"
+               d="m 169.467,194.102 v 310.136 c 0,8.086 2.95,15.08 8.862,20.986 5.808,5.809 12.681,8.732 20.6,8.824 7.914,-0.092 14.792,-3.016 20.606,-8.824 5.906,-5.906 8.855,-12.9 8.855,-20.986 V 194.102 c 8.862,-3.103 42.081,-32.711 42.081,-42.204 V 27.161 c 0,-4.033 -1.481,-7.534 -4.431,-10.49 -2.956,-2.95 -6.457,-4.431 -10.49,-4.431 -4.045,0 -7.54,1.481 -10.49,4.431 -2.956,2.962 -4.431,6.457 -4.431,10.49 v 96.99 c 0,4.045 -1.481,7.54 -4.431,10.49 -2.956,2.956 -6.451,4.425 -10.49,4.425 -4.045,0 -7.54,-1.469 -10.49,-4.425 -2.95,-2.95 -4.431,-6.451 -4.431,-10.49 v -96.99 c 0,-4.033 -1.481,-7.534 -4.431,-10.49 -2.95,-2.95 -6.45,-4.431 -10.489,-4.431 -4.045,0 -7.54,1.481 -10.49,4.431 -2.956,2.962 -4.431,6.457 -4.431,10.49 v 96.99 c 0,4.045 -1.481,7.54 -4.431,10.49 -2.956,2.956 -6.451,4.425 -10.49,4.425 -4.045,0 -7.54,-1.469 -10.49,-4.425 -2.956,-2.95 -4.431,-6.451 -4.431,-10.49 v -96.99 c 0,-4.033 -1.475,-7.534 -4.431,-10.49 -2.95,-2.95 -6.45,-4.431 -10.49,-4.431 -4.045,0 -7.54,1.481 -10.489,4.431 -2.95,2.962 -4.431,6.457 -4.431,10.49 v 124.732 c 0.003,9.491 39.342,39.1 48.204,42.209 z"
+               id="path4115-6" />
+            <path
+               style="fill:#ffffff"
+               inkscape:connector-curvature="0"
+               d="m 199.308,534.08 c -0.129,0 -0.251,-0.037 -0.38,-0.037 -0.128,0 -0.245,0.037 -0.379,0.037 h 0.759 z"
+               id="path4117-5" />
+            <path
+               style="fill:#ffffff"
+               inkscape:connector-curvature="0"
+               d="m 389.848,540.201 c -0.129,0 -0.25,-0.037 -0.379,-0.037 -0.129,0 -0.252,0.037 -0.379,0.037 h 0.758 z"
+               id="path4119-7" />
+            <path
+               style="fill:#ffffff"
+               inkscape:connector-curvature="0"
+               d="m 326.139,268.588 h 33.869 v 241.771 c 0,8.084 2.949,15.08 8.855,20.984 5.812,5.809 12.686,8.734 20.605,8.826 7.912,-0.092 14.791,-3.018 20.605,-8.826 5.906,-5.904 8.861,-12.9 8.861,-20.984 V 14.921 c 0,-4.033 -1.48,-7.534 -4.43,-10.49 C 411.549,1.481 408.055,0 404.016,0 H 393.293 C 372.773,0 355.209,7.308 340.6,21.916 325.993,36.53 318.686,54.095 318.686,74.609 v 186.52 c 0,2.02 0.74,3.77 2.215,5.245 1.468,1.474 3.218,2.214 5.238,2.214 z"
+               id="path4121-5" />
+          </g>
+        </g>
+        <g
+           style="fill:#ffffff"
+           id="g4123-4" />
+        <g
+           style="fill:#ffffff"
+           id="g4125-1" />
+        <g
+           style="fill:#ffffff"
+           id="g4127-2" />
+        <g
+           style="fill:#ffffff"
+           id="g4129-0" />
+        <g
+           style="fill:#ffffff"
+           id="g4131-0" />
+        <g
+           style="fill:#ffffff"
+           id="g4133-1" />
+        <g
+           style="fill:#ffffff"
+           id="g4135-4" />
+        <g
+           style="fill:#ffffff"
+           id="g4137-6" />
+        <g
+           style="fill:#ffffff"
+           id="g4139-0" />
+        <g
+           style="fill:#ffffff"
+           id="g4141-7" />
+        <g
+           style="fill:#ffffff"
+           id="g4143-1" />
+        <g
+           style="fill:#ffffff"
+           id="g4145-7" />
+        <g
+           style="fill:#ffffff"
+           id="g4147-7" />
+        <g
+           style="fill:#ffffff"
+           id="g4149-7" />
+        <g
+           style="fill:#ffffff"
+           id="g4151-7" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+         x="-390.38873"
+         y="1854.1382"
+         id="text6251-37-3"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan6253-2-3"
+           x="-390.38873"
+           y="1854.1382"
+           style="fill:#ffffff;font-family:Mission Gothic Light;-inkscape-font-specification:Mission Gothic Light">Restaurants</tspan></text>
+    </g>
+  </g>
+</svg>
