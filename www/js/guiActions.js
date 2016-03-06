@@ -35,13 +35,19 @@ function startCountdown() {
 
     $('#time-left').html(tleft);
 
+    var counter=0;
 
     setInterval(function(){
         time=time-1;
+        counter+=1;
         if (time <= 3600) {  ///// TODO compute traveltime distance from you to the gate and perhaps even the delay through customs/security
             shouldStopPlaying = true;
             $('.ui-page').css("background", "rgba(255,0,0,0.5)");
-            alert("YOU ARE RUNNING OUT OF TIME: Prepare for your final quest");
+
+            if(counter%30)
+            {
+                alert("YOU ARE RUNNING OUT OF TIME: Prepare for your final quest");
+            }
         }
         var hours = Math.floor(time / 3600);
         var minutes = Math.floor((time / 60) % 60);
