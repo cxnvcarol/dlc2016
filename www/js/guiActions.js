@@ -39,12 +39,12 @@ function startCountdown() {
 
     setInterval(function(){
         time=time-1;
-        counter+=1;
+        counter++;
         if (time <= 3600) {  ///// TODO compute traveltime distance from you to the gate and perhaps even the delay through customs/security
             shouldStopPlaying = true;
             $('.ui-page').css("background", "rgba(255,0,0,0.5)");
 
-            if(counter%30)
+            if(counter%30==0)
             {
                 alert("YOU ARE RUNNING OUT OF TIME: Prepare for your final quest");
             }
