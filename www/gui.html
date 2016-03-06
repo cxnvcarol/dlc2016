@@ -10,6 +10,7 @@
     <!-- Include the jQuery Mobile library -->
     <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
+    <script src="js/fraportAPI/DBLoader.js"></script>
     <script src="js/kaethesBeacons.js"></script>
 
     <!-- Include custom stylesheets -->
@@ -49,7 +50,7 @@
     <div align="center"  data-role="main" class="ui-content">
         <p class="p-intro">Please, enter the ID of your next connection:</p><br>
 
-        <label class="p-intro" for="con-info">(e.g., flight: LH282, train: ICE717)</label>
+        <label class="p-intro" for="con-info">(e.g., flight: LH282, train: ICE 699)</label>
         <input type="text" name="con-info" id="con-info" value=""  />
         <div class="containing-element">
             <select name="flip-min" id="flip-min" data-role="slider">
@@ -252,6 +253,11 @@
 <div data-role="page" id="points">
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-points">COUNTDOWN</h3>
+    </div>
+    <div class="score" style="text-align: center; margin-top:50px; alignment:center;">
+        <img src="img/score_lb.svg" width="50%"/></div></br>
+        <p id="currentPoints">2500 Points</p>
+        <a href="#pass-selquest">Go back to SafariQuests</a>
     </div>
 
 </div>

@@ -9,6 +9,7 @@ function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
     var typeId = document.getElementById('flip-min').value;
+    var time;
 
     if(flightId)
     {
@@ -16,10 +17,11 @@ function startCountdown() {
     }
 
     if(typeId =="flight"){
-        var time = getTimeTillNextFlight(flightId);
+        time = getTimeTillNextFlight(flightId);
     }
 
     if(typeId =="train"){
+        time = getTimeToNextDeparture(flightId);
         // function from DBBAhN var time = getTimeTillNextFlight(flightId);
     }
 
@@ -36,8 +38,11 @@ function startCountdown() {
 
     setInterval(function(){
         time=time-1;
-        if (time <= 3600)   ///// TODO compute traveltime distance from you to the gate and perhaps even the delay through customs/security
+        if (time <= 3600) {  ///// TODO compute traveltime distance from you to the gate and perhaps even the delay through customs/security
             shouldStopPlaying = true;
+            $('.ui-page').css("background", "rgba(255,0,0,0.5)");
+            alert("YOU ARE RUNNING OUT OF TIME: Prepare for your final quest");
+        }
         var hours = Math.floor(time / 3600);
         var minutes = Math.floor((time / 60) % 60);
         var seconds = Math.floor(time % 60);

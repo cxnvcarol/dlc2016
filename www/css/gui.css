@@ -1,6 +1,7 @@
 .ui-page{
     background: linear-gradient(45deg, rgba(173,255,47,1) 0%, rgba(126,226,237,1) 100%); /* w3c */ !important;
     /*background-image:linear-gradient(to bottom, #72c5c2, #6bc36c); /* Standard syntax; must be last */
+    text-align: center;
     background-size: cover;
     background-size:100% 100%;
 }

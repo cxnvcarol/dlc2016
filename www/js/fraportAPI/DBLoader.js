@@ -10,17 +10,16 @@ function getTrainStationsByName(nameString) {
     var serviceURL = "/location.name";
 
     var trainStationData = "";
-    console.log($.ajax({
+    $.ajax({
         url: DB_Base_URL + serviceURL + defaultParameters + "input=" + nameString,
         headers : { authKey : authKey_ },
         dataType: "json",
         async: false,
         success: function (result) {
             trainStationData = result;
-            console.log(result);
             console.log("Successfully loaded trainStations for namestring: " + nameString);
         }
-    }));
+    });
     return trainStationData;
 }
 
@@ -76,6 +75,31 @@ function getJourneyDetailsForArrivalOrDeparture(arrivalOrDeparture) {
     return journeyData;
 }
 
+function getTimeToNextDeparture(trainName) {
+    var date = new Date();
+    var tstring = "2016-" + (date.getMonth() + 1) + "-" + date.getDate();
+    var trainStations = getTrainStationsByName("Frankfurt(M) Flughafen Fernbf");
+    var trainTime;
+    var stoplocations = trainStations["LocationList"]["StopLocation"];
+    for (var trainStation in stoplocations) {
+        var departureTable = getDepartureTable(stoplocations[trainStation]["id"], tstring);
+        for (var departure in departureTable) {
+            if (departureTable[departure]["name"] == trainName) {
+                trainTime = departureTable[departure]["time"];
+                break;
+            }
+        }
+        if (trainTime != undefined) {
+            break;
+        }
+    }
+    var restime = trainTime.split(":");
+    var otherDate = new Date(2016, date.getMonth(), date.getDate(), restime[0], restime[1]);
+
+    return (otherDate-date) / 1000;
+}
+
+console.log("TIME TO DEST: " + getTimeToNextDeparture("ICE 699")); /// 717, 699
 //console.log("Departures");
 //console.log(getDepartureTable("008070003"));
 //console.log("Arrivals");
