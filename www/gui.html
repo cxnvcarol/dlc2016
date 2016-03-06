@@ -174,16 +174,16 @@
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
 
-        <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
+        <a id="q1" href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
         Fight the wolfs!
     </a>
-    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
+    <a id="q2" href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
         QUEST 2
     </a>
-    <a href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a" onclick="fixMap(3)">
+    <a id="q3" href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a" onclick="fixMap(3)">
         QUEST 3
     </a>
-    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" onclick="fixMap(4)">
+    <a id="q4" href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" onclick="fixMap(4)">
         QUEST 4
     </a>
     </div>
@@ -201,7 +201,7 @@
     <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
-        <p class="p-intro" style="text-align: center;">You might think airports are boring – nothing more than an unavoidable waypoint on a
+        <p id="pq1" class="p-intro" style="text-align: center;">You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
         <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>

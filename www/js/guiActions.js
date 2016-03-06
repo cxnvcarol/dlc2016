@@ -38,3 +38,38 @@ function startCountdown() {
     },1000);
 
 }
+
+
+function populateQuests() {
+    var questList = Quest.acquire(0, {lati: app.currentPosition[0], long: app.currentPosition[1]}).slice(0, 4);
+    $('#q1').html(TargetDB.targets[questList[0]].title);
+    $('#q1').click(function() {
+        getQuestDestinationByName(TargetDB.targets[questList[0]].name);
+        app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
+    });
+    $('pq1').html(TargetDB.targets[questList[0]].descr);
+
+
+    $('#q2').html(TargetDB.targets[questList[1]].title);
+    $('#q2').click(function() {
+        getQuestDestinationByName(TargetDB.targets[questList[1]].name);
+        app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
+    });
+    $('#pq2').html(TargetDB.targets[questList[1]].descr);
+
+
+    $('#q3').html(TargetDB.targets[questList[2]].title);
+    $('#q3').click(function() {
+        getQuestDestinationByName(TargetDB.targets[questList[2]].name);
+        app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
+    });
+    $('#pq3').html(TargetDB.targets[questList[2]].descr);
+
+
+    $('#q4').html(TargetDB.targets[questList[3]].title);
+    $('#q4').click(function() {
+        getQuestDestinationByName(TargetDB.targets[questList[3]].name);
+        app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
+    });
+    $('#pq4').html(TargetDB.targets[questList[3]].descr);
+}
