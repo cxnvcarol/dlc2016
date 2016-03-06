@@ -9,6 +9,7 @@ function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
     var typeId = document.getElementById('flip-min').value;
+    var time;
 
     if(flightId)
     {
@@ -16,10 +17,11 @@ function startCountdown() {
     }
 
     if(typeId =="flight"){
-        var time = getTimeTillNextFlight(flightId);
+        time = getTimeTillNextFlight(flightId);
     }
 
     if(typeId =="train"){
+        time = getTimeToNextDeparture(flightId);
         // function from DBBAhN var time = getTimeTillNextFlight(flightId);
     }
 
