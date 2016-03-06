@@ -8,7 +8,7 @@ var QRCodeScanner = {
         scanner.scan(
             function(result) {
                 if(!result.cancelled) {
-                    back = result.text;
+                    updatePoints(result.text);
                     //alert(result.text);
                     //return result;
                 }

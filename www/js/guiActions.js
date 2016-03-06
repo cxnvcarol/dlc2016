@@ -102,8 +102,8 @@ function populateQuests() {
     });
     $('#pq1').html(TargetDB.targets[questList[0]].descr);
     $('#qrs1').click(function() {
-        var code = QRCodeScanner.scan();
-        //alert(code);
+        QRCodeScanner.scan();
+        /*alert(code);
         var pid = QRCodeMapping[code];
         //alert(pid);
         var value = Quest.finish(pid, Game.log.currentTarget);
@@ -112,7 +112,7 @@ function populateQuests() {
             Game.log.targetHistory.push(Game.log.currentTarget);
             Game.log.currentPoints += value.points;
             Game.log.totalPoints += value.points;
-        }
+        }*/
     });
 
 
@@ -123,12 +123,7 @@ function populateQuests() {
     });
     $('#pq2').html(TargetDB.targets[questList[1]].descr);
     $('#qrs2').click(function() {
-        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
-        if(value.success) {
-            Game.log.targetHistory.push(Game.log.currentTarget);
-            Game.log.currentPoints += value.points;
-            Game.log.totalPoints += value.points;
-        }
+        QRCodeScanner.scan();
     });
 
 
@@ -139,12 +134,7 @@ function populateQuests() {
     });
     $('#pq3').html(TargetDB.targets[questList[2]].descr);
     $('#qrs3').click(function() {
-        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
-        if(value.success) {
-            Game.log.targetHistory.push(Game.log.currentTarget);
-            Game.log.currentPoints += value.points;
-            Game.log.totalPoints += value.points;
-        }
+        QRCodeScanner.scan();
     });
 
 
@@ -155,23 +145,14 @@ function populateQuests() {
     });
     $('#pq4').html(TargetDB.targets[questList[3]].descr);
     $('#qrs4').click(function() {
-        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
-        if(value.success) {
-            Game.log.targetHistory.push(Game.log.currentTarget);
-            Game.log.currentPoints += value.points;
-            Game.log.totalPoints += value.points;
-        }
+        QRCodeScanner.scan();
     });
 }
 
 
-function scanButton() {
-        var code = QRCodeScanner.scan();
-        alert(code);
+function updatePoints(code) {
         var pid = QRCodeMapping[code];
-        alert(pid);
         var value = Quest.finish(pid, Game.log.currentTarget);
-        alert(value);
         if(value.success) {
             Game.log.targetHistory.push(Game.log.currentTarget);
             Game.log.currentPoints += value.points;
