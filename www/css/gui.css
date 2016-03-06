@@ -21,6 +21,7 @@
     height: 300px;
 }
 
+.containing-element .ui-slider-switch { width: 9em }
 
 .gui-welcome {
     background-image: url("../img/travelQuest_icon.svg") !important;
@@ -226,6 +227,7 @@
     text-align: left;
     font-size: 16px;
     font-family: Calibri;
+    text-align: center;
 }
 
 .ui-icon-selquest.gui-btn {

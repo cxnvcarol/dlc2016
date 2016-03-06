@@ -8,11 +8,21 @@ var shouldStopPlaying = false;
 function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
+    var typeId = document.getElementById('flip-min').value;
+
     if(flightId)
     {
         flightId=flightId.trim();
     }
-    var time = getTimeTillNextFlight(flightId);
+
+    if(typeId =="flight"){
+        var time = getTimeTillNextFlight(flightId);
+    }
+
+    if(typeId =="train"){
+        // function from DBBAhN var time = getTimeTillNextFlight(flightId);
+    }
+
 
     var hours = Math.floor(time / 3600);
     var minutes = Math.floor((time / 60) % 60);
