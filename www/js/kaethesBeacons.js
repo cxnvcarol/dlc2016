@@ -190,7 +190,7 @@ function drawOnMap(lat, long, name, color)
 {
     if(aPointOnTheMap != null) {removePoint(aPointOnTheMap)};
 
-    aPointOnTheMap = new L.circle([lat, long], 8, {
+    aPointOnTheMap = new L.circle([lat, long], 20, {
         color: color,
         fillColor: color,
         fillOpacity: 0.5

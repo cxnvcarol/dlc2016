@@ -12,6 +12,13 @@ function displayFlightInfo(flightInfo) {
 function updateGoTarget(gateNumber) {
     var gate=getGateLocationByGateName(gateNumber);
     app.currentTarget=[gate.latitude,gate.longitude];
+    try{
+        app.drawCurrentTarget();
+    }
+    catch(e)
+    {
+        console.log("")
+    }
 
 }
 function startCountdown() {
