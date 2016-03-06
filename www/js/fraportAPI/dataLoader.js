@@ -180,7 +180,7 @@ function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
 
 function FraportTransits() {
     var data;
-    var allSites;
+    var allSites="";
     var deleg1=$.ajax({
         headers: {Authorization: fraportCheckinsAuthorization},
         url: "https://developer.fraport.de/api/transittimes/1.0/transittime/",
