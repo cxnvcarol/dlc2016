@@ -32,7 +32,6 @@ L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
 
 
 
-
 // draw fraport data on the map
 
 function addFraPositionsToMap()
@@ -152,7 +151,7 @@ function removeArrow(triInstance)
 
 function drawMarkerOnMap(lat, lng, name, icon)
 {
-    alert("position: "+app.currentPosition);
+
     removeMarker(aPointOnTheMap);
     var myIcon = L.icon({
         iconUrl: icon
@@ -161,7 +160,7 @@ function drawMarkerOnMap(lat, lng, name, icon)
     aPointOnTheMap =  new L.marker([lat, lng]).addTo(leafletMap);
     aPointOnTheMap.setIcon(myIcon);
     aPointOnTheMap.bindPopup(name);
-    //alert("map updated");
+
     return aPointOnTheMap;
 }
 function removeMarker(m)
@@ -185,4 +184,4 @@ drawOnMap(50.04784854285611, 8.573498725891112, "bla", "blue");
 
 
 // get lat and long of certain positions on the map
-leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});
+//leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});

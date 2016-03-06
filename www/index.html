@@ -34,7 +34,9 @@
     <header>
         <h2 style = "text-align: center"> THE ULTIMATE BEACON MAP!! <br/></h2>
         <script type="text/javascript" src="cordova.js"></script>
+
         <script type="text/javascript" src="js/index.js"></script>
+
     </header>
 
     
@@ -43,6 +45,7 @@
     <script src="js/3rdparty/jquery-2.2.1.min.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
+
     <script src="js/fraportAPI/DBLoader.js"></script>
     <script src="js/kaethesBeacons.js"></script>
 
@@ -55,7 +58,15 @@
     <button id="testgui" onclick="goGuiPage()">Go to GUI</button>
     
     <script type="text/javascript">
-        app.initialize();
+        try{
+            //app.initialize();
+
+        }
+        catch(e)
+        {
+            console.log("Are you in the browser?... check this out:");
+            console.log(e);
+        }
     </script>
 </body>
 

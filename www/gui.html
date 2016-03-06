@@ -10,6 +10,7 @@
     <!-- Include the jQuery Mobile library -->
     <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
+
     <!-- Include custom stylesheets -->
     <link rel="stylesheet" href="css/gui.css">
     <link rel="stylesheet" href="css/leaflet.css" />
@@ -91,6 +92,7 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-go">COUNTDOWN</h3>
     </div>
     <div id="map"></div>
+
     <script src="js/kaethesBeacons.js"></script>
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
@@ -136,7 +138,8 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-squest">COUNTDOWN</h3>
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
-    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
+
+        <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
         Fight the wolfs!
     </a>
     <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
@@ -160,7 +163,7 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq1">COUNTDOWN</h3>
     </div>
     <div id="quest1map"></div>
-    <script src="js/quest1map.js"></script>
+    <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
         <p class="p-intro">You might think airports are boring – nothing more than an unavoidable waypoint on a
@@ -254,7 +257,7 @@
     }
     //alert("before initializing");
     try{
-    app.initialize();
+        //app.initialize();
     }
     catch(e)
     {
