@@ -78,7 +78,7 @@ function populateQuests() {
     $('#pq1').html(TargetDB.targets[questList[0]].descr);
     $('#qrs1').click(function() {
         var code = QRCodeScanner.scan();
-        //alert(code);
+        alert(code);
         var pid = QRCodeMapping[code];
         //alert(pid);
         var value = Quest.finish(pid, Game.log.currentTarget);
