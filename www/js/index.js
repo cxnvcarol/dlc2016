@@ -74,6 +74,7 @@ function recalculatePosition() {
     {
         app.currentPosition=getVertices(app.sensedRegions[0]);
 
+
     }
     else if(app.sensedRegions.length>1){
         app.sensedRegions.forEach(function(reg)
@@ -96,6 +97,14 @@ app.drawCurrentPosition=function()
     var iconurl="img/cross.png";
     $('#mypos').text("pos: "+app.currentPosition);
     var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
+    if(app.currentTarget)
+    {
+        Quest.follow(
+            {lati: app.currentTarget[0], long: app.currentTarget[1]},
+            {lati: app.currentPosition[0], long: app.currentPosition[1]},
+            0.5, 0.2, 0.4
+        );
+    }
     return app.currentPosition;
 }
 app.startScanForBeacons = function()
@@ -108,7 +117,7 @@ app.startScanForBeacons = function()
 
     var delegate = new cordova.plugins.locationManager.Delegate();
 
-
+    console.log("delegate created");
 
     delegate.didDetermineStateForRegion = function(pluginResult)
     {

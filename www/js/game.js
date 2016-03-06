@@ -55,7 +55,7 @@ var TargetDB = {
                 longitude: 8.567174,
                 latitude:  50.046467,
             },
-            points: 0
+            points: 50,
         }
 
 
@@ -63,12 +63,12 @@ var TargetDB = {
     ],
     rewards: [
         {
-            shopName: McDonalds,
+            shopName: 'McDonalds',
             descr: '50% Off a McMenu',
             points: 10
         },
         {
-            shopName: Engelhorn,
+            shopName: 'Engelhorn',
             descr: '5% Off',
             points: 100
         }
@@ -79,7 +79,29 @@ var Quest = {
     // assign a quest to the player
     acquire: function(duration, currentPosition) {
         // based on interests and available time select quest/target
-        var closest = {id: 0, dist: Infinity};
+        var comp = function(a, b) {
+            var d1 = distanceBetweenPositions(
+                currentPosition.lati,
+                currentPosition.long,
+                a.position.lati,
+                a.position.long
+            );
+            var d2 = distanceBetweenPositions(
+                currentPosition.lati,
+                currentPosition.long,
+                b.position.lati,
+                b.position.long
+            );
+            return d1 - d2;
+        };
+        var sorted = TargetDB.targets.sort(comp);
+        var result = new Array();
+        for(q in sorted) {
+            var i = $.inArray(q, TargetDB.targets);
+            result.push(i);
+        }
+        return result;
+        /*var closest = {id: 0, dist: Infinity};
         for(i = 0; i < TargetDB.targets.length; i++) {
             d = distanceBetweenPositions(
                 currentPosition.lati,
@@ -91,7 +113,7 @@ var Quest = {
                 closest.id = i;
             }
         }
-        return closest.id;
+        return closest.id;*/
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
     follow: function(target, currentPosition, distFromCurr, arrowWidth, arrowHeight) {
