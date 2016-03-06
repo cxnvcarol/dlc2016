@@ -99,7 +99,7 @@ function getTimeToNextDeparture(trainName) {
     return otherDate-date;
 }
 
-getTimeToNextDeparture("ICE 699"); /// 717
+getTimeToNextDeparture("ICE 717"); /// 717, 699
 //console.log("Departures");
 //console.log(getDepartureTable("008070003"));
 //console.log("Arrivals");
