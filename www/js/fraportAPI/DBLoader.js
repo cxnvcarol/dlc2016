@@ -92,7 +92,7 @@ function getTimeToNextDeparture(trainName) {
         if (trainTime != undefined) {
             break;
         }else{
-            trainTime = 10800;
+            trainTime = "03:00";
         }
     }
     var restime = trainTime.split(":");
