@@ -220,7 +220,7 @@
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc1"></h3>
         <p id='pq1' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
-        <a id='qrcscanner1' onclick="scanButton()" href="#points" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+        <a id='qrs1' href="#points" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>
 </div>
 <!----------------------------------------------------->
@@ -289,7 +289,7 @@
     <div class="score" style="text-align: center; margin-top:50px; alignment:center;">
         <img src="img/score_lb.svg" width="50%"/></div></br>
         <p id="currentPoints">2500 Points</p>
-        <a href="#pass-selquest">Go back to SafariQuests</a>
+        <a onclick="populateQuests()" href="#pass-selquest">Go back to SafariQuests</a>
     </div>
 
 </div>
