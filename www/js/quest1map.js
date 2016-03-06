@@ -24,11 +24,11 @@ var mapBounds = new L.LatLngBounds(
     new L.LatLng(50.040178, 8.556086),
     new L.LatLng(50.056731, 8.597244));
 
-var leafletMap = L.map('quest1map').fitBounds(mapBounds);
+var leafletMap1 = L.map('quest1map').fitBounds(mapBounds);
 L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(leafletMap);
+}).addTo(leafletMap1);
 
 
 
@@ -37,12 +37,12 @@ L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
 
 function addFraPositionsToMap()
 {
-    //leafletMap.remove();
-    //leafletMap = L.map('map').fitBounds(mapBounds);
+    //leafletMap1.remove();
+    //leafletMap1 = L.map('map').fitBounds(mapBounds);
     /*L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
      maxZoom: 18,
      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-     }).addTo(leafletMap);*/
+     }).addTo(leafletMap1);*/
 
 
     for(var test in positionDataFra.allSites)
@@ -69,12 +69,12 @@ var circleArray = new Array();
 // draw map depending on floor
 function addBeaconToMap()
 {
-    leafletMap.remove();
-    leafletMap = L.map('quest1map').fitBounds(mapBounds);
+    leafletMap1.remove();
+    leafletMap1 = L.map('quest1map').fitBounds(mapBounds);
     L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(leafletMap);
+    }).addTo(leafletMap1);
 
     circleArray = [];
     circleArray.length = 0;
@@ -120,13 +120,13 @@ function drawOnMap(lat, long, name, color)
         fillColor: color,
         fillOpacity: 0.5
     });
-    leafletMap.addLayer(aPointOnTheMap);
+    leafletMap1.addLayer(aPointOnTheMap);
     aPointOnTheMap.bindPopup(name);
 }
 
 function removePoint(pointInstance)
 {
-    leafletMap.removeLayer(pointInstance);
+    leafletMap1.removeLayer(pointInstance);
 }
 
 
@@ -141,12 +141,12 @@ function drawArrow(spitze_lat, spitze_long, hinten1_lat, hinten1_long, hinten2_l
         [spitze_lat, spitze_long],
         [hinten1_lat, hinten1_long],
         [hinten2_lat, hinten2_long]
-    ]).addTo(leafletMap);
+    ]).addTo(leafletMap1);
 }
 
 function removeArrow(triInstance)
 {
-    triInstance.removeLayer(leafletMap);
+    triInstance.removeLayer(leafletMap1);
 }
 
 
@@ -158,7 +158,7 @@ function drawMarkerOnMap(lat, lng, name, icon)
         iconUrl: icon
     });
 
-    aPointOnTheMap =  new L.marker([lat, lng]).addTo(leafletMap);
+    aPointOnTheMap =  new L.marker([lat, lng]).addTo(leafletMap1);
     aPointOnTheMap.setIcon(myIcon);
     aPointOnTheMap.bindPopup(name);
     //alert("map updated");
@@ -167,7 +167,7 @@ function drawMarkerOnMap(lat, lng, name, icon)
 function removeMarker(m)
 {
     if(m){
-        leafletMap.removeLayer(m);
+        leafletMap1.removeLayer(m);
     }
 }
 
@@ -185,4 +185,4 @@ drawOnMap(50.04784854285611, 8.573498725891112, "bla", "blue");
 
 
 // get lat and long of certain positions on the map
-leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});
+leafletMap1.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});

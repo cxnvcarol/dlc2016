@@ -87,12 +87,17 @@ function recalculatePosition() {
         app.currentPosition=[center.lat,center.lng];
     }
 
+    app.drawCurrentPosition();
+
+}
+
+app.drawCurrentPosition=function()
+{
     var iconurl="img/cross.png";
     $('#mypos').text("pos: "+app.currentPosition);
     var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
     return app.currentPosition;
 }
-
 app.startScanForBeacons = function()
 {
 
