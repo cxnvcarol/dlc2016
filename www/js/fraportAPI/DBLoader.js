@@ -91,6 +91,8 @@ function getTimeToNextDeparture(trainName) {
         }
         if (trainTime != undefined) {
             break;
+        }else{
+            trainTime = 10800;
         }
     }
     var restime = trainTime.split(":");

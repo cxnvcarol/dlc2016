@@ -4,6 +4,7 @@
     text-align: center;
     background-size: cover;
     background-size:100% 100%;
+
 }
 
 #map {
@@ -243,6 +244,7 @@
     height: 20px !important;
     width: 60% !important;
     border: 0px;
+
 }
 
 .ui-icon-scan.gui-btn {
@@ -267,22 +269,30 @@
 }
 
 
-.ui-icon-iquest {
+.ui-icon-iquest.gui-btn {
      margin-left:auto;
      margin-right:auto;
      margin-top:20px;
-     background-size: 50%;
      background-color: rgba(255,255,255,0.6) !important;
-     height: 20px !important;
-     width: 50% !important;
+     height: 25% !important;
+     width: 80% !important;
+    font-size: 16px;
+    font-family: Calibri;
+    text-align: left;
+    color:black;
  }
 
-.ui-icon-iquest.ui-btn-a:hover {
+.ui-icon-iquest.gui-btn:active {
     margin-left:auto;
     margin-right:auto;
     margin-top:20px;
-    background-size: 50%;
-    background-color: rgba(255,0,0,0.6) !important;
-    height: 20px !important;
-    width: 50% !important;
+    background-color: rgba(0,0,0,0.6) !important;
+    height: 25% !important;
+    width: 80% !important;
+    font-size: 16px;
+    font-family: Calibri;
+    text-align: left;
+    color:white!important;
+    font-weight: normal;
 }
+
