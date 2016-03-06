@@ -212,20 +212,16 @@ function getQuestDestinationByName(questName)
     {
         if(TargetDB.targets[quest].name == questName)
         {
-            destination.coordinates.latitude = TargetDB.targets.position.latitude;
-            destination.coordinates.longitude = TargetDB.targets.position.longitude;
+            destination.coordinates.latitude = TargetDB.targets[quest].position.latitude;
+            destination.coordinates.longitude = TargetDB.targets[quest].position.longitude;
         }
 
         if(destination.isFinalQuest == true) {
-            drawOnMap(destination.coordinates.latitude, coordinates.target.longitude, questName, "red");
+            drawOnMap(destination.coordinates.latitude, destination.coordinates.longitude, questName, "red");
         }
     }
 }
 
-
-
-setFinalQuestFlagToTrue();
-getQuestDestinationByName("SpecialQuest");
 
 
 // get lat and long of certain positions on the map
