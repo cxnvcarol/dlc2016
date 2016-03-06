@@ -222,7 +222,6 @@ function FraportTransits() {
 
     $.when(deleg1,deleg2).done(function()
     {
-        alert("fraport loaded");
         for (var waitingDataContainer in waitingTimeData) {
             var processsite = waitingTimeData[waitingDataContainer]["processSite"];
             staticTransitsData[processsite["name"]]["hasWaitingTime"] = true;
