@@ -230,6 +230,17 @@ function FraportTransits() {
 
 };
 
+FraportTransits();
+
+function getGateLocationByGateName(gatenameString) {    //// For example A7
+    var returnValue = staticTransitsData["Gate " + gatenameString];
+    if (undefined == returnValue) {
+        var firstLetter = gatenameString.charAt(0);
+        return staticTransitsData[firstLetter + "-Gates"];
+    }
+    return returnValue;
+}
+
 function getCurrentWaitingTime(siteName) {
     var waitingTimeData = "";
     $.ajax({
