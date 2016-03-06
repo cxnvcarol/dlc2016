@@ -129,6 +129,41 @@
 <!----------------------------------------------------->
 
 <!----------------------------------------------------->
+<!--Main page for option: info
+<!----------------------------------------------------->
+<div data-role="page" id="pass-info">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-info">COUNTDOWN</h3>
+    </div>
+    <div class="gui-info-hintro" data-role="main">
+        <h3 class="ui-label information" name="inf-id" id="inf-id"></h3>
+        <p class="p-intro">Find the closest location</p>
+        <div class="gui-quest-btns gui-btn-a" data-role="main">
+            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findWC" data-theme="a"></a></br>
+            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findFood" data-theme="a"></a></br>
+            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#findWC" data-role="button" data-icon="findWifi" data-theme="a"></a></br>
+        </div>
+
+    </div>
+</div>
+<!----------------------------------------------------->
+
+
+
+<!----------------------------------------------------->
+<!--Quest1
+<!----------------------------------------------------->
+<div data-role="page" id="findWC">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-findWC">COUNTDOWN</h3>
+    </div>
+    <div id="quest-map"></div>
+    <script src="js/quest1map.js"></script>
+</div>
+<!----------------------------------------------------->
+
+
+<!----------------------------------------------------->
 <!--Play: quests list
 <!----------------------------------------------------->
 <div data-role="page" id="pass-selquest">
@@ -163,7 +198,7 @@
     <script src="js/quest1map.js"></script>
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
-        <p class="p-intro">You might think airports are boring – nothing more than an unavoidable waypoint on a
+        <p class="p-intro" style="text-align: center;">You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
         <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>
@@ -198,6 +233,18 @@
 <div data-role="page" id="p-quest4">
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">COUNTDOWN</h3>
+    </div>
+
+</div>
+<!----------------------------------------------------->
+
+
+<!----------------------------------------------------->
+<!--Point
+<!----------------------------------------------------->
+<div data-role="page" id="points">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-points">COUNTDOWN</h3>
     </div>
 
 </div>
