@@ -1,4 +1,4 @@
-0/**
+/**
  * Created by Nils Feige on 05.03.2016.
  */
 var fraportCheckinsAuthorization = "Bearer 8c62c669ac72dad461cc6292a5123479";
