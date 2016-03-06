@@ -77,7 +77,13 @@ function populateQuests() {
     });
     $('#pq1').html(TargetDB.targets[questList[0]].descr);
     $('#qrs1').click(function() {
-        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
+        alert('Hallo');
+        var code = QRCodeScanner.scan();
+        alert(code);
+        var pid = QRCodeMapping[code];
+        alert(pid);
+        var value = Quest.finish(pid, Game.log.currentTarget);
+        alert(value);
         if(value.success) {
             Game.log.targetHistory.push(Game.log.currentTarget);
             Game.log.currentPoints += value.points;
