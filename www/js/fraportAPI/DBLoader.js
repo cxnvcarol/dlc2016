@@ -76,10 +76,10 @@ function getJourneyDetailsForArrivalOrDeparture(arrivalOrDeparture) {
     return journeyData;
 }
 
-console.log("Departures");
-console.log(getDepartureTable("008070003"));
-console.log("Arrivals");
-console.log(getArrivalTable("008070003"));
-console.log("journeyData");
-console.log(getJourneyDetailsForArrivalOrDeparture(getArrivalTable("008070003")[0]));
-console.log(getJourneyDetailsForArrivalOrDeparture(getDepartureTable("008070003")[0]));
+//console.log("Departures");
+//console.log(getDepartureTable("008070003"));
+//console.log("Arrivals");
+//console.log(getArrivalTable("008070003"));
+//console.log("journeyData");
+//console.log(getJourneyDetailsForArrivalOrDeparture(getArrivalTable("008070003")[0]));
+//console.log(getJourneyDetailsForArrivalOrDeparture(getDepartureTable("008070003")[0]));
