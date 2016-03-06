@@ -90,7 +90,7 @@ function getTimeToNextDeparture(trainName) {
             }
         }
        if (trainTime != undefined) {
-            break;
+            break ;
        }
     }
     var restime = trainTime.split(":");
