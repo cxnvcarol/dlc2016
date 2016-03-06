@@ -1,6 +1,13 @@
 /**
  * Created by mzeyen on 3/5/16.
  */
+var QRCodeMapping = {
+    t2_position_one: 0,
+    t2_position_two: 1,
+    t2_position_three: 2,
+    t2_position_four: 3
+};
+
 var TargetDB = {
     targets: [
         {

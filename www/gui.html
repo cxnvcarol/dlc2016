@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/leaflet.css" />
 
     <script src="js/leaflet.js"></script>
+
+
 </head>
 <body>
 
@@ -43,12 +45,20 @@
         <h1></h1>
     </div>
 
-    <div data-role="main" class="ui-content">
+    <div align="center"  data-role="main" class="ui-content">
         <p class="p-intro">Please, enter the ID of your next connection:</p><br>
-        <label class="p-intro" for="con-info">(e.g., flight: LH282, train: ICE717)</label>
+
+        <label class="p-intro" for="con-info">(e.g., flight: LH282, train: ICE 699)</label>
         <input type="text" name="con-info" id="con-info" value=""  />
+        <div class="containing-element">
+            <select name="flip-min" id="flip-min" data-role="slider">
+                <option value="flight">Flight</option>
+                <option value="train">Train</option>
+            </select>
+        </div>
+
         <a class="ui-icon-submit ui-nodisc-icon gui-btn"  onclick="startCountdown()" data-role="button" data-icon="submit" data-theme="a"></a>
-        <a href="#dialogone">Go to CLUE</a>
+        <!--<a href="#dialogone">Go to CLUE</a>-->
     </div>
 </div>
 <!----------------------------------------------------->
@@ -92,7 +102,6 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-go">COUNTDOWN</h3>
     </div>
     <div id="map"></div>
-
     <script src="js/kaethesBeacons.js"></script>
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
@@ -141,29 +150,25 @@
         <h3 class="ui-label information" name="inf-id" id="inf-id"></h3>
         <p class="p-intro">Find the closest location</p>
         <div class="gui-quest-btns gui-btn-a" data-role="main">
-            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findWC" data-theme="a"></a></br>
-            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findFood" data-theme="a"></a></br>
-            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#findWC" data-role="button" data-icon="findWifi" data-theme="a"></a></br>
+            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findWC" data-theme="a"></a></br>
+            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findFood" data-theme="a"></a></br>
+            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#i-toilets" data-role="button" data-icon="findWifi" data-theme="a"></a></br>
         </div>
 
     </div>
 </div>
 <!----------------------------------------------------->
 
-
-
 <!----------------------------------------------------->
-<!--Quest1
+<!--Info Toilets
 <!----------------------------------------------------->
-<div data-role="page" id="findWC">
+<div data-role="page" id="i-toilets">
     <div class="gui-countdown" data-role="header">
-        <h3 class="ui-counter" name="counter-id" id="counter-label-findWC">COUNTDOWN</h3>
+        <h3 class="ui-counter" name="counter-id" id="counter-label-iwc">COUNTDOWN</h3>
     </div>
-    <div id="quest-map"></div>
-    <script src="js/quest1map.js"></script>
+
 </div>
 <!----------------------------------------------------->
-
 
 <!----------------------------------------------------->
 <!--Play: quests list
@@ -173,17 +178,16 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-squest">COUNTDOWN</h3>
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
-
-        <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
+    <a id='q1' href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
         Fight the wolfs!
     </a>
-    <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
+    <a id='q2' href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
         QUEST 2
     </a>
-    <a href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a" onclick="fixMap(3)">
+    <a id='q3' href="#p-quest3" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest3" data-theme="a" onclick="fixMap(3)">
         QUEST 3
     </a>
-    <a href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" onclick="fixMap(4)">
+    <a id='q4' href="#p-quest4" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest4" data-theme="a" onclick="fixMap(4)">
         QUEST 4
     </a>
     </div>
@@ -201,9 +205,9 @@
     <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
-        <p class="p-intro" style="text-align: center;">You might think airports are boring – nothing more than an unavoidable waypoint on a
+        <p id='pq1' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
-        <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+        <a id='qrs1' href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>
 </div>
 <!----------------------------------------------------->
@@ -241,13 +245,17 @@
 </div>
 <!----------------------------------------------------->
 
-
 <!----------------------------------------------------->
-<!--Point
+<!--POINTS
 <!----------------------------------------------------->
 <div data-role="page" id="points">
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-points">COUNTDOWN</h3>
+    </div>
+    <div class="score" style="text-align: center; margin-top:50px; alignment:center;">
+        <img src="img/score_lb.svg" width="50%"/></div></br>
+        <p id="currentPoints">2500 Points</p>
+        <a href="#pass-selquest">Go back to SafariQuests</a>
     </div>
 
 </div>
@@ -276,7 +284,7 @@
 
 <script src="js/guiActions.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<script src="js/index.js"></script>
+<!-- <script src="js/index.js"></script>-->
 
 <script type="text/javascript">
     function fixMap(idMap){
@@ -304,7 +312,7 @@
     }
     //alert("before initializing");
     try{
-        //app.initialize();
+    //app.initialize();
     }
     catch(e)
     {

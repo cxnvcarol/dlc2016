@@ -54,6 +54,39 @@ function addFraPositionsToMap()
 }
 
 
+var restroomCircles = new Array();
+
+function addRestroomLocationsToMap()
+{
+    for(var circs in restroomCircles)
+    {
+        restroomCircles[circs].removeLayer(leafletMap);
+    }
+
+    //leafletMap.remove();
+    //leafletMap = L.map('map').fitBounds(mapBounds);
+    /*L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+     maxZoom: 18,
+     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+     }).addTo(leafletMap);*/
+    restroomCircles = [];
+    restroomCircles.length = 0;
+
+    console.log(restroomCircles.length);
+
+    for(var rest in restrooms.toiletsObjects) {
+        restroomCircles.push(new L.circle([restrooms.toiletsObjects[rest].position.latitude, restrooms.toiletsObjects[rest].position.longitude], 5, {
+            color: 'blue',
+            fillColor: 'blue',
+            fillOpacity: 0.5
+        }));
+        restroomCircles[rest].addTo(leafletMap);
+    }
+
+    console.log(restroomCircles.length);
+}
+
+
 
 
 
@@ -188,6 +221,107 @@ var destination = {
 }
 
 
+// ... for example, a list of restrooms in the airport
+var restrooms =
+{
+    toiletsObjects : [
+        {
+            name: "RR1",
+            position: {
+                latitude: 50.04359408999003,
+                longitude: 8.561868667602537,
+            }
+        },
+
+        {
+            name: "RR2",
+            position: {
+                latitude: 50.04798288785706,
+                longitude: 8.56355309486389,
+            }
+        },
+
+        {
+            name: "RR3",
+            position: {
+                latitude: 50.04860638152871,
+                longitude: 8.565446734428406,
+            }
+        },
+
+        {
+            name: "RR4",
+            position: {
+                latitude:  50.047087247414225,
+                longitude: 8.567925095558167,
+            }
+        },
+
+        {
+            name: "RR5",
+            position: {
+                latitude:  50.04712514023309,
+                longitude: 8.572195172309875,
+            }
+        },
+
+        {
+            name: "RR6",
+            position: {
+                latitude:  50.04800355628536,
+                longitude: 8.575649857521057,
+            }
+        },
+
+        {
+            name: "RR7",
+            position: {
+                latitude:  50.05023913873106,
+                longitude: 8.573150038719177,
+            }
+        },
+
+        {
+            name: "RR8",
+            position: {
+                latitude:  50.05107271909004,
+                longitude: 8.575488924980164,
+            }
+        },
+
+        {
+            name: "RR9",
+            position: {
+                latitude:  50.04942965634377,
+                longitude: 8.580633401870728,
+            }
+        },
+
+        {
+            name: "RR10",
+            position: {
+                latitude:  50.051672061309354,
+                longitude: 8.588658571243286,
+            }
+        },
+
+        {
+            name: "RR11",
+            position: {
+                latitude:  50.049829232334965,
+                longitude: 8.568697571754456,
+            }
+        },
+]
+};
+
+
+
+
+
+
+
+
 
 
 
@@ -225,4 +359,5 @@ function getQuestDestinationByName(questName)
 
 
 // get lat and long of certain positions on the map
-//leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + "," + a.latlng.lng);});
+//leafletMap.on('click', function(a) {console.log("lat, long: " + a.latlng.lat + ", " + a.latlng.long);});
+
