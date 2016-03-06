@@ -11,6 +11,7 @@
     <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
     <script src="js/fraportAPI/DBLoader.js"></script>
+    <script src="js/kaethesBeacons.js"></script>
 
     <!-- Include custom stylesheets -->
     <link rel="stylesheet" href="css/gui.css">
@@ -135,7 +136,7 @@
             you hunt, the better the rewards you get in our various airport shops!</p>
 
         <p class="p-intro">Let us ignite your wanderlust even before you arrive. </p>
-        <a href="#pass-selquest" class="ui-icon-selquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="selquest" data-theme="a"></a>
+        <a href="#pass-selquest" onclick="populateQuests()" class="ui-icon-selquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="selquest" data-theme="a"></a>
     </div>
 </div>
 <!----------------------------------------------------->
@@ -205,7 +206,7 @@
     <div id="quest1map"></div>
     <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
-        <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
+        <h3 class="ui-label clue" name="clue-desc" id="clue-desc1"></h3>
         <p id='pq1' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
         <a id='qrs1' href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
@@ -220,7 +221,14 @@
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq2">COUNTDOWN</h3>
     </div>
-
+    <div id="quest2map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest2desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue-desc2"></h3>
+        <p id='pq2' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
+            journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
+        <a id='qrs2' href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
 </div>
 <!----------------------------------------------------->
 
@@ -231,7 +239,14 @@
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq3">COUNTDOWN</h3>
     </div>
-
+    <div id="quest3map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest3desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
+        <p id='pq3' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
+            journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
+        <a id='qrs3' href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
 </div>
 <!----------------------------------------------------->
 
@@ -242,7 +257,14 @@
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">COUNTDOWN</h3>
     </div>
-
+    <div id="quest4map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest4desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue-desc4"></h3>
+        <p id='pq4' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
+            journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
+        <a id='qrs4' href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
 </div>
 <!----------------------------------------------------->
 
@@ -283,9 +305,10 @@
 
 <!-- Include the guiTest javascript -->
 
-<script src="js/guiActions.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<!-- <script src="js/index.js"></script>-->
+<script src="js/game.js"></script>
+<script src="js/index.js"></script>
+<script src="js/guiActions.js"></script>
 
 <script type="text/javascript">
     function fixMap(idMap){

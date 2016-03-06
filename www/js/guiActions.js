@@ -62,7 +62,13 @@ function startCountdown() {
 
 
 function populateQuests() {
-    var questList = Quest.acquire(0, {lati: app.currentPosition[0], long: app.currentPosition[1]}).slice(0, 4);
+    var pos = {
+        lati: app.currentPosition[0],
+        long: app.currentPosition[1]
+    };
+    console.log(pos);
+    var questList = Quest.acquire(0, {lati: app.currentPosition[0], long: app.currentPosition[1]});
+    console.log(questList);
     $('#q1').html(TargetDB.targets[questList[0]].title);
     $('#q1').click(function() {
         getQuestDestinationByName(TargetDB.targets[questList[0]].name);
