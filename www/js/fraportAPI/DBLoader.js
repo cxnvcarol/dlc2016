@@ -89,9 +89,9 @@ function getTimeToNextDeparture(trainName) {
                 break;
             }
         }
-       if (trainTime != undefined) {
-            break ;
-       }
+        if (trainTime != undefined) {
+            break;
+        }
     }
     var restime = trainTime.split(":");
     var otherDate = new Date(2016, date.getMonth(), date.getDate(), restime[0], restime[1]);
@@ -99,7 +99,7 @@ function getTimeToNextDeparture(trainName) {
     return otherDate-date;
 }
 
-getTimeToNextDeparture("ICE 717"); /// 717, 699
+console.log("TIME TO DEST: " + getTimeToNextDeparture("ICE 699")); /// 717, 699
 //console.log("Departures");
 //console.log(getDepartureTable("008070003"));
 //console.log("Arrivals");
