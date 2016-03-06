@@ -96,7 +96,7 @@ function getTimeToNextDeparture(trainName) {
     var restime = trainTime.split(":");
     var otherDate = new Date(2016, date.getMonth(), date.getDate(), restime[0], restime[1]);
 
-    return otherDate-date;
+    return (otherDate-date) / 1000;
 }
 
 console.log("TIME TO DEST: " + getTimeToNextDeparture("ICE 699")); /// 717, 699
