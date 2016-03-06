@@ -10,6 +10,7 @@
     <!-- Include the jQuery Mobile library -->
     <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
+    <script src="js/kaethesBeacons.js"></script>
 
     <!-- Include custom stylesheets -->
     <link rel="stylesheet" href="css/gui.css">
@@ -134,7 +135,7 @@
             you hunt, the better the rewards you get in our various airport shops!</p>
 
         <p class="p-intro">Let us ignite your wanderlust even before you arrive. </p>
-        <a href="#pass-selquest" class="ui-icon-selquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="selquest" data-theme="a"></a>
+        <a href="#pass-selquest" onclick="populateQuests()" class="ui-icon-selquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="selquest" data-theme="a"></a>
     </div>
 </div>
 <!----------------------------------------------------->
@@ -277,9 +278,10 @@
 
 <!-- Include the guiTest javascript -->
 
-<script src="js/guiActions.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<!-- <script src="js/index.js"></script>-->
+<script src="js/game.js"></script>
+<script src="js/index.js"></script>
+<script src="js/guiActions.js"></script>
 
 <script type="text/javascript">
     function fixMap(idMap){

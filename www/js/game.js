@@ -18,7 +18,7 @@ var TargetDB = {
                 longitude: 8.570677042007446,
                 latitude: 50.0501323567298,
             },
-            points: 0
+            points: 10
         },
 
         {
@@ -29,7 +29,7 @@ var TargetDB = {
                 longitude: 8.573868870735167,
                 latitude: 50.051372391135324,
             },
-            points: 0
+            points: 20
         },
 
         {
@@ -40,7 +40,7 @@ var TargetDB = {
                 longitude: 8.571395874023438,
                 latitude: 50.05015991339804,
             },
-            points: 0
+            points: 30
         },
 
         {
@@ -51,7 +51,7 @@ var TargetDB = {
                 longitude: 8.573498725891112,
                 latitude:  50.04784854285611,
             },
-            points: 0
+            points: 40
         },
 
         {
@@ -107,20 +107,8 @@ var Quest = {
             var i = $.inArray(q, TargetDB.targets);
             result.push(i);
         }
+        console.log(result);
         return result;
-        /*var closest = {id: 0, dist: Infinity};
-        for(i = 0; i < TargetDB.targets.length; i++) {
-            d = distanceBetweenPositions(
-                currentPosition.lati,
-                currentPosition.long,
-                TargetDB.targets[i].position.latitude,
-                TargetDB.targets[i].position.longitude);
-            if(d <= closest.dist && $.inArray(closest.id, Game.log.targetHistory) < 0) {
-                closest.dist = d;
-                closest.id = i;
-            }
-        }
-        return closest.id;*/
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
     follow: function(target, currentPosition, distFromCurr, arrowWidth, arrowHeight) {

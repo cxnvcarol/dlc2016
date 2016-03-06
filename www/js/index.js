@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+    currentPosition: [50.0501323567298, 8.570677042007446],
     // Application Constructor
     initialize: function() {
         this.bindEvents();
