@@ -179,53 +179,56 @@ function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
 };
 
 function FraportTransits() {
-    this.test;
-    $.ajax({
+    var data;
+    var allSites;
+    var deleg1=$.ajax({
         headers: {Authorization: fraportCheckinsAuthorization},
         url: "https://developer.fraport.de/api/transittimes/1.0/transittime/",
         dataType: "json",
-        async: false,
+        async: true,
         success: function (result) {
-            test = result;
+            data = result;
+
+            var j = 0;
+            for (var i in data) {
+                j++;
+                var startSiteName = data[i]["path"]["startingPoint"]["name"];
+                var endSiteName = data[i]["path"]["destination"]["name"];
+                var distance = data[i]["path"]["distance"];
+                var transitTime = data[i]["path"]["transitTime"];
+                if (undefined == allSites[startSiteName]) {
+                    allSites[startSiteName] = data[i]["path"]["startingPoint"];
+                }
+                if (undefined == allSites[endSiteName])
+                    allSites[endSiteName] = data[i]["path"]["destination"];
+                allSites[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
+                allSites[endSiteName][startSiteName] = { distance : distance, transitTime : transitTime };
+            }
             console.log("Successfully loaded all transit time data");
         }
     });
-    this.data = test;
-
-    this.allSites = {};
-
-    var j = 0;
-    for (var i in this.data) {
-        j++;
-        var startSiteName = this.data[i]["path"]["startingPoint"]["name"];
-        var endSiteName = this.data[i]["path"]["destination"]["name"];
-        var distance = this.data[i]["path"]["distance"];
-        var transitTime = this.data[i]["path"]["transitTime"];
-        if (undefined == this.allSites[startSiteName]) {
-            this.allSites[startSiteName] = this.data[i]["path"]["startingPoint"];
-        }
-        if (undefined == this.allSites[endSiteName])
-            this.allSites[endSiteName] = this.data[i]["path"]["destination"];
-        this.allSites[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
-        this.allSites[endSiteName][startSiteName] = { distance : distance, transitTime : transitTime };
-    }
 
     var waitingTimeData = "";
-    $.ajax({
+    var deleg2=$.ajax({
         headers: {Authorization: fraportCheckinsAuthorization},
         url: "https://developer.fraport.de/api/waitingperiods/1.0/waitingperiod",
         dataType: "json",
-        async: false,
+        async: true,
         success: function (result) {
             waitingTimeData = result;
             console.log("Successfully loaded all waiting times");
         }
     });
 
-    for (var waitingDataContainer in waitingTimeData) {
-        var processsite = waitingTimeData[waitingDataContainer]["processSite"];
-        this.allSites[processsite["name"]]["hasWaitingTime"] = true;
-    }
+    $.when(deleg1,deleg2).done(function()
+    {
+        alert("fraport loaded");
+        for (var waitingDataContainer in waitingTimeData) {
+            var processsite = waitingTimeData[waitingDataContainer]["processSite"];
+            allSites[processsite["name"]]["hasWaitingTime"] = true;
+        }
+    });
+
 };
 
 function getCurrentWaitingTime(siteName) {

@@ -55,7 +55,7 @@ var TargetDB = {
                 longitude: 8.567174,
                 latitude:  50.046467,
             },
-            points: 0
+            points: 50,
         }
 
 

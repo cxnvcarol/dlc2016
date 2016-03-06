@@ -10,6 +10,7 @@
     <!-- Include the jQuery Mobile library -->
     <script src="js/3rdparty/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/fraportAPI/dataLoader.js"></script>
+
     <!-- Include custom stylesheets -->
     <link rel="stylesheet" href="css/gui.css">
     <link rel="stylesheet" href="css/leaflet.css" />
@@ -91,6 +92,7 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-go">COUNTDOWN</h3>
     </div>
     <div id="map"></div>
+
     <script src="js/kaethesBeacons.js"></script>
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
@@ -129,6 +131,41 @@
 <!----------------------------------------------------->
 
 <!----------------------------------------------------->
+<!--Main page for option: info
+<!----------------------------------------------------->
+<div data-role="page" id="pass-info">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-info">COUNTDOWN</h3>
+    </div>
+    <div class="gui-info-hintro" data-role="main">
+        <h3 class="ui-label information" name="inf-id" id="inf-id"></h3>
+        <p class="p-intro">Find the closest location</p>
+        <div class="gui-quest-btns gui-btn-a" data-role="main">
+            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findWC" data-theme="a"></a></br>
+            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#findWC" data-role="button" data-icon="findFood" data-theme="a"></a></br>
+            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#findWC" data-role="button" data-icon="findWifi" data-theme="a"></a></br>
+        </div>
+
+    </div>
+</div>
+<!----------------------------------------------------->
+
+
+
+<!----------------------------------------------------->
+<!--Quest1
+<!----------------------------------------------------->
+<div data-role="page" id="findWC">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-findWC">COUNTDOWN</h3>
+    </div>
+    <div id="quest-map"></div>
+    <script src="js/quest1map.js"></script>
+</div>
+<!----------------------------------------------------->
+
+
+<!----------------------------------------------------->
 <!--Play: quests list
 <!----------------------------------------------------->
 <div data-role="page" id="pass-selquest">
@@ -136,7 +173,8 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-squest">COUNTDOWN</h3>
     </div>
     <div class="gui-quest-btns gui-btn-a" data-role="main">
-    <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
+
+        <a href="#p-quest1" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest1" data-theme="a" onclick="fixMap(1)">
         Fight the wolfs!
     </a>
     <a href="#p-quest2" class="ui-icon-iquest ui-nodisc-icon gui-btn"  data-role="button" data-icon="iquest2" data-theme="a" onclick="fixMap(2)">
@@ -160,10 +198,10 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq1">COUNTDOWN</h3>
     </div>
     <div id="quest1map"></div>
-    <script src="js/quest1map.js"></script>
+    <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
-        <p class="p-intro">You might think airports are boring – nothing more than an unavoidable waypoint on a
+        <p class="p-intro" style="text-align: center;">You might think airports are boring – nothing more than an unavoidable waypoint on a
             journey to your final destination. Let us convince you otherwise by sending you on a TravelQuest Safari!</p>
         <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>
@@ -198,6 +236,18 @@
 <div data-role="page" id="p-quest4">
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">COUNTDOWN</h3>
+    </div>
+
+</div>
+<!----------------------------------------------------->
+
+
+<!----------------------------------------------------->
+<!--Point
+<!----------------------------------------------------->
+<div data-role="page" id="points">
+    <div class="gui-countdown" data-role="header">
+        <h3 class="ui-counter" name="counter-id" id="counter-label-points">COUNTDOWN</h3>
     </div>
 
 </div>
@@ -254,7 +304,7 @@
     }
     //alert("before initializing");
     try{
-    app.initialize();
+        //app.initialize();
     }
     catch(e)
     {
