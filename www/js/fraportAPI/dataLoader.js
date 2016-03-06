@@ -178,9 +178,10 @@ function loadFlightDetailsForFlight(airlineAbbrev, flightNumber, dateString) {
     return data[0]["flight"];
 };
 
+var staticTransitsData = {};
+
 function FraportTransits() {
     var data;
-    var allSites="";
     var deleg1=$.ajax({
         headers: {Authorization: fraportCheckinsAuthorization},
         url: "https://developer.fraport.de/api/transittimes/1.0/transittime/",
@@ -196,15 +197,14 @@ function FraportTransits() {
                 var endSiteName = data[i]["path"]["destination"]["name"];
                 var distance = data[i]["path"]["distance"];
                 var transitTime = data[i]["path"]["transitTime"];
-                if (undefined == allSites[startSiteName]) {
-                    allSites[startSiteName] = data[i]["path"]["startingPoint"];
+                if (undefined == staticTransitsData[startSiteName]) {
+                    staticTransitsData[startSiteName] = data[i]["path"]["startingPoint"];
                 }
-                if (undefined == allSites[endSiteName])
-                    allSites[endSiteName] = data[i]["path"]["destination"];
-                allSites[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
-                allSites[endSiteName][startSiteName] = { distance : distance, transitTime : transitTime };
+                if (undefined == staticTransitsData[endSiteName])
+                    staticTransitsData[endSiteName] = data[i]["path"]["destination"];
+                staticTransitsData[startSiteName][endSiteName] = { distance : distance, transitTime : transitTime };
+                staticTransitsData[endSiteName][startSiteName] = { distance : distance, transitTime : transitTime };
             }
-            console.log("Successfully loaded all transit time data");
         }
     });
 
@@ -222,14 +222,24 @@ function FraportTransits() {
 
     $.when(deleg1,deleg2).done(function()
     {
-        alert("fraport loaded");
         for (var waitingDataContainer in waitingTimeData) {
             var processsite = waitingTimeData[waitingDataContainer]["processSite"];
-            allSites[processsite["name"]]["hasWaitingTime"] = true;
+            staticTransitsData[processsite["name"]]["hasWaitingTime"] = true;
         }
     });
 
 };
+
+FraportTransits();
+
+function getGateLocationByGateName(gatenameString) {    //// For example A7
+    var returnValue = staticTransitsData["Gate " + gatenameString];
+    if (undefined == returnValue) {
+        var firstLetter = gatenameString.charAt(0);
+        return staticTransitsData[firstLetter + "-Gates"];
+    }
+    return returnValue;
+}
 
 function getCurrentWaitingTime(siteName) {
     var waitingTimeData = "";
