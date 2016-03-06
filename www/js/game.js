@@ -102,12 +102,13 @@ var Quest = {
             return d1 - d2;
         };
         var sorted = TargetDB.targets.sort(comp);
+        console.log('sorted array');
+        console.log(sorted);
         var result = new Array();
         for(q in sorted) {
-            var i = $.inArray(q, TargetDB.targets);
+            var i = $.inArray(sorted[q], TargetDB.targets);
             result.push(i);
         }
-        console.log(result);
         return result;
     },
     // track the position of the current quest and draw an arrow on map in radius l and with width u.
