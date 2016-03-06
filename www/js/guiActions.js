@@ -55,9 +55,18 @@ function populateQuests() {
     $('#q1').html(TargetDB.targets[questList[0]].title);
     $('#q1').click(function() {
         getQuestDestinationByName(TargetDB.targets[questList[0]].name);
+        Game.log.currentTarget = questList[0];
         app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
     });
-    $('pq1').html(TargetDB.targets[questList[0]].descr);
+    $('#pq1').html(TargetDB.targets[questList[0]].descr);
+    $('#qrs1').click(function() {
+        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
+        if(value.success) {
+            Game.log.targetHistory.push(Game.log.currentTarget);
+            Game.log.currentPoints += value.points;
+            Game.log.totalPoints += value.points;
+        }
+    });
 
 
     $('#q2').html(TargetDB.targets[questList[1]].title);
@@ -66,6 +75,14 @@ function populateQuests() {
         app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
     });
     $('#pq2').html(TargetDB.targets[questList[1]].descr);
+    $('#qrs2').click(function() {
+        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
+        if(value.success) {
+            Game.log.targetHistory.push(Game.log.currentTarget);
+            Game.log.currentPoints += value.points;
+            Game.log.totalPoints += value.points;
+        }
+    });
 
 
     $('#q3').html(TargetDB.targets[questList[2]].title);
@@ -74,6 +91,14 @@ function populateQuests() {
         app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
     });
     $('#pq3').html(TargetDB.targets[questList[2]].descr);
+    $('#qrs3').click(function() {
+        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
+        if(value.success) {
+            Game.log.targetHistory.push(Game.log.currentTarget);
+            Game.log.currentPoints += value.points;
+            Game.log.totalPoints += value.points;
+        }
+    });
 
 
     $('#q4').html(TargetDB.targets[questList[3]].title);
@@ -82,4 +107,12 @@ function populateQuests() {
         app.currentTarget = [destination.coordinates.latitude, destination.coordinates.longitude];
     });
     $('#pq4').html(TargetDB.targets[questList[3]].descr);
+    $('#qrs4').click(function() {
+        var value = Quest.finish(QRCodeMapping[QRCodeScanner.scan()], Game.log.currentTarget);
+        if(value.success) {
+            Game.log.targetHistory.push(Game.log.currentTarget);
+            Game.log.currentPoints += value.points;
+            Game.log.totalPoints += value.points;
+        }
+    });
 }
