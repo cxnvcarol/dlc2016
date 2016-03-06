@@ -5,17 +5,26 @@
 //Get time left to catch connection
 var shouldStopPlaying = false;
 
+function displayFlightInfo(flightInfo) {
+    //TODO Extract info to display nicer
+    $("#flight-info").html(JSON.stringify(flightInfo));
+}
+function updateGoTarget(gateNumber) {
+    var gate=getGateLocationByGateName(gateNumber);
+    app.currentTarget=[gate.latitude,gate.longitude];
+
+}
 function startCountdown() {
     window.location='#pass-time-left';
     var flightId = document.getElementById('con-info').value;
     var typeId = document.getElementById('flip-min').value;
-    var time;
 
     if(flightId)
     {
         flightId=flightId.trim();
     }
 
+    var time=0;
     if(typeId =="flight"){
         time = getTimeTillNextFlight(flightId);
     }
@@ -25,6 +34,15 @@ function startCountdown() {
         // function from DBBAhN var time = getTimeTillNextFlight(flightId);
     }
 
+    if(app)
+    {
+        app.nextFlight=flightId;
+
+    }
+    var flightInfo=getFlightInformationForNextFlight(flightId);
+    displayFlightInfo(flightInfo);
+    updateGoTarget((flightInfo.departure?flightInfo.departure.gate:"A50")||"A50");
+    var time = getTimeTillNextFlight(flightId);
 
     var hours = Math.floor(time / 3600);
     var minutes = Math.floor((time / 60) % 60);
