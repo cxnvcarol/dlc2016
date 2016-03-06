@@ -20,6 +20,9 @@
 #quest4map {
     height: 300px;
 }
+#mapInfo {
+    height: 300px;
+}
 
 .containing-element .ui-slider-switch { width: 9em }
 

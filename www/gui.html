@@ -102,11 +102,18 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-go">COUNTDOWN</h3>
     </div>
     <div id="map"></div>
-    <script src="js/kaethesBeacons.js"></script>
+
+
+    <!--
     <button id="floorSwitcherBtnUp" onclick="goOneFloorUp()" >Floor up</button>
     <button id="floorSwitcherBtnDown" onclick="goOneFloorDown()">Floor down</button>
 
-    <div id="temporalDiv">
+-->
+    <div id="flight-info">
+
+    </div>
+    <div id="temporalDiv"
+         style="display: none">
         Pos: <p id="mypos"></p><br>
         Msg: <p id="msg"></p>
         <br><br>
@@ -150,9 +157,9 @@
         <h3 class="ui-label information" name="inf-id" id="inf-id"></h3>
         <p class="p-intro">Find the closest location</p>
         <div class="gui-quest-btns gui-btn-a" data-role="main">
-            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findWC" data-theme="a"></a></br>
-            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findFood" data-theme="a"></a></br>
-            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#i-toilets" data-role="button" data-icon="findWifi" data-theme="a"></a></br>
+            <a class="ui-icon-findWC ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findWC" data-theme="a"  onclick="fixMap(5)"></a></br>
+            <a class="ui-icon-findFood ui-nodisc-icon gui-btn"  href="#i-toilets" data-role="button" data-icon="findFood" data-theme="a"  onclick="fixMap(5)"></a></br>
+            <a class="ui-icon-findWifi ui-nodisc-icon gui-btn" href="#i-toilets" data-role="button" data-icon="findWifi" data-theme="a"  onclick="fixMap(5)"></a></br>
         </div>
 
     </div>
@@ -166,6 +173,11 @@
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-iwc">COUNTDOWN</h3>
     </div>
+
+    <div id="mapInfo"></div>
+
+
+
 
 </div>
 <!----------------------------------------------------->
@@ -202,7 +214,6 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq1">COUNTDOWN</h3>
     </div>
     <div id="quest1map"></div>
-    <!--<script src="js/quest1map.js"></script>-->
     <div id="quest1desc">
         <h3 class="ui-label clue" name="clue-desc" id="clue-desc"></h3>
         <p id='pq1' class="p-intro" >You might think airports are boring – nothing more than an unavoidable waypoint on a
@@ -220,6 +231,14 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq2">COUNTDOWN</h3>
     </div>
 
+    <div id="quest2map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest2desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue2-desc"></h3>
+        <p id='pq2' class="p-intro" ></p>
+        <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
+
 </div>
 <!----------------------------------------------------->
 
@@ -229,6 +248,13 @@
 <div data-role="page" id="p-quest3">
     <div class="gui-countdown" data-role="header">
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq3">COUNTDOWN</h3>
+    </div>
+    <div id="quest3map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest3desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue3-desc"></h3>
+        <p id='pq3' class="p-intro" ></p>
+        <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
     </div>
 
 </div>
@@ -242,6 +268,15 @@
         <h3 class="ui-counter" name="counter-id" id="counter-label-pq4">COUNTDOWN</h3>
     </div>
 
+    <div id="quest4map"></div>
+    <!--<script src="js/quest1map.js"></script>-->
+    <div id="quest4desc">
+        <h3 class="ui-label clue" name="clue-desc" id="clue4-desc"></h3>
+        <p id='pq4' class="p-intro" ></p>
+        <a href="#scanQR" class="ui-icon-scan ui-nodisc-icon gui-btn"  data-role="button" data-icon="scan" data-theme="a"></a>
+    </div>
+
+
 </div>
 <!----------------------------------------------------->
 
@@ -254,6 +289,7 @@
     </div>
 
 </div>
+<script src="js/kaethesBeacons.js"></script>
 <!----------------------------------------------------->
 
 <!----------------------------------------------------->
@@ -279,11 +315,12 @@
 
 <script src="js/guiActions.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
-<!-- <script src="js/index.js"></script>-->
+<script src="js/index.js"></script>
 
 <script type="text/javascript">
     function fixMap(idMap){
-        var maptoFix=leafletMap;
+
+        /*
         switch(idMap)
         {
             case 1:
@@ -298,16 +335,45 @@
             case 4:
                 maptoFix=leafletMap4;
                 break;
+            case 5:
+                maptoFix=leafletMapInfo;
+                break;
         }
+        */
+        maptoFix=leafletMap;
 
     setTimeout(function(){
+        /*
         maptoFix.invalidateSize();
         maptoFix.fitBounds(mapBounds);
+        */
+        leafletMap.invalidateSize();
+        leafletMap.fitBounds(mapBounds);
+
+        leafletMap1.invalidateSize();
+        leafletMap1.fitBounds(mapBounds);
+
+        leafletMap2.invalidateSize();
+        leafletMap2.fitBounds(mapBounds);
+
+        leafletMap3.invalidateSize();
+        leafletMap3.fitBounds(mapBounds);
+
+        leafletMap4.invalidateSize();
+        leafletMap4.fitBounds(mapBounds);
+
+        leafletMapInfo.invalidateSize();
+        leafletMapInfo.fitBounds(mapBounds);
+
+
+        app.drawCurrentPosition();
+
+
     }, 500);
     }
     //alert("before initializing");
     try{
-    //app.initialize();
+    app.initialize();
     }
     catch(e)
     {

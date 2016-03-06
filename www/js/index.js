@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+    currentPosition: [50.0501323567298, 8.570677042007446],
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -88,22 +89,37 @@ function recalculatePosition() {
         app.currentPosition=[center.lat,center.lng];
     }
 
+    //alert("new pos!");
     app.drawCurrentPosition();
 
+}
+
+app.drawCurrentTarget=function()
+{
+    if(app.currentTarget)
+    {
+        drawOnMap(app.currentTarget[0],app.currentTarget[1],"Your target","green");
+    }
+    return app.currentTarget;
 }
 
 app.drawCurrentPosition=function()
 {
     var iconurl="img/cross.png";
     $('#mypos').text("pos: "+app.currentPosition);
-    var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
+    if(app.currentPosition)
+    {
+        var marker=drawMarkerOnMap(app.currentPosition[0],app.currentPosition[1],"Me!",iconurl);
+    }
     if(app.currentTarget)
     {
+        /*
         Quest.follow(
             {lati: app.currentTarget[0], long: app.currentTarget[1]},
             {lati: app.currentPosition[0], long: app.currentPosition[1]},
             0.5, 0.2, 0.4
         );
+        */
     }
     return app.currentPosition;
 }
@@ -118,6 +134,7 @@ app.startScanForBeacons = function()
     var delegate = new cordova.plugins.locationManager.Delegate();
 
     console.log("delegate created");
+    alert("delegate created");
 
     delegate.didDetermineStateForRegion = function(pluginResult)
     {

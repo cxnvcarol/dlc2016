@@ -1,7 +1,8 @@
 /**
  * Created by Nils Feige on 05.03.2016.
  */
-var fraportCheckinsAuthorization = "Bearer 8c62c669ac72dad461cc6292a5123479";
+//var fraportCheckinsAuthorization = "Bearer 8c62c669ac72dad461cc6292a5123479";
+var fraportCheckinsAuthorization = "Bearer f9f2991962a485efc601ce7056cf4330";
 
 function parseDateString(dateString) {
     var pat = /(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)Z/;
